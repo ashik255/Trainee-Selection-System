@@ -1,16 +1,13 @@
 package com.bjit.traineeSelectionSystem.TSS.controller;
 
 import com.bjit.traineeSelectionSystem.TSS.entity.Circular;
-import com.bjit.traineeSelectionSystem.TSS.model.ResponseAll;
+import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.model.circular.CircularRequest;
 import com.bjit.traineeSelectionSystem.TSS.service.CircularService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
 
 @RestController
 @RequestMapping("/admin")
@@ -18,36 +15,34 @@ import java.awt.*;
 public class CircularController {
     private final CircularService circularService;
 
-    @GetMapping
-    public ResponseEntity<ResponseAll<List<Circular>>> getAllCirculars() {
-        ResponseAll<List<Circular>> response = circularService.getAllCirculars();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    @GetMapping("/getAllCircular")
+    public ResponseEntity<ResponseModel> getAllCirculars() {
+        return circularService.getAllCirculars();
     }
 
     @GetMapping("/{circularId}")
-    public ResponseEntity<ResponseAll<Circular>> getCircularById(@PathVariable Long circularId) {
-        ResponseAll<Circular> response = circularService.getCircularById(circularId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<ResponseModel<Circular>> getCircularById(@PathVariable Long circularId) {
+        ResponseModel<Circular> responseModel = circularService.getCircularById(circularId);
+        return new ResponseEntity<>(responseModel, HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<ResponseAll<Circular>> createCircular(@RequestBody CircularRequest circularRequest) {
-        ResponseAll<Circular> response = circularService.createCircular(circularRequest);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<ResponseModel<Circular>> createCircular(@RequestBody CircularRequest circularRequest) {
+        ResponseModel<Circular> responseModel = circularService.createCircular(circularRequest);
+        return new ResponseEntity<>(responseModel, HttpStatus.CREATED);
     }
 
     @PutMapping("/{circularId}")
-    public ResponseEntity<ResponseAll<Circular>> updateCircular(
+    public ResponseEntity<ResponseModel<Circular>> updateCircular(
             @PathVariable Long circularId,
             @RequestBody CircularRequest circularRequest
     ) {
-        ResponseAll<Circular> response = circularService.updateCircular(circularId, circularRequest);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        ResponseModel<Circular> responseModel = circularService.updateCircular(circularId, circularRequest);
+        return new ResponseEntity<>(responseModel, HttpStatus.OK);
     }
 
     @DeleteMapping("/{circularId}")
-    public ResponseEntity<ResponseAll<String>> deleteCircular(@PathVariable Long circularId) {
-        ResponseAll<String> response = circularService.deleteCircular(circularId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public ResponseEntity<String> deleteCircular(@PathVariable Long circularId) {
+        return circularService.deleteCircular(circularId);
     }
 }

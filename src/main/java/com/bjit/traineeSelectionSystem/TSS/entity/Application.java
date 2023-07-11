@@ -6,7 +6,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.security.PrivateKey;
 import java.util.Date;
 
 @Entity
@@ -23,7 +22,7 @@ public class Application {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserEntity user;
     private String firstName;
     private String lastName;
     private String gender;
