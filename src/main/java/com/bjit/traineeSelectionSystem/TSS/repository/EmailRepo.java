@@ -1,7 +1,7 @@
 package com.bjit.traineeSelectionSystem.TSS.repository;
 
-import com.bjit.traineeSelectionSystem.TSS.entity.Admin;
+import com.bjit.traineeSelectionSystem.TSS.entity.Email;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdminRepo extends JpaRepository<Admin,Long> {
+public interface EmailRepo extends JpaRepository<Email,Long> {
 }
