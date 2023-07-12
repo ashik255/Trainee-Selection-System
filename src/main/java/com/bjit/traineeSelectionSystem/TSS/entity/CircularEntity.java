@@ -6,17 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
-@Table(name = "Evaluator")
+@Table(name = "Circular")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Evaluator {
+public class CircularEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long evaluatorId;
-    private Long adminId;
-    private  String Name;
-    private  String email;
+    private Long circularId;
+    private String title;
+    private String description;
+    private Date startDate;
+    private Date endDate;
 }

@@ -1,16 +1,11 @@
 package com.bjit.traineeSelectionSystem.TSS.controller;
 
-import com.bjit.traineeSelectionSystem.TSS.entity.Circular;
-import com.bjit.traineeSelectionSystem.TSS.model.ResponseAll;
+import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.model.circular.CircularRequest;
 import com.bjit.traineeSelectionSystem.TSS.service.CircularService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
 
 @RestController
 @RequestMapping("/admin")
@@ -18,36 +13,24 @@ import java.awt.*;
 public class CircularController {
     private final CircularService circularService;
 
-    @GetMapping
-    public ResponseEntity<ResponseAll<List<Circular>>> getAllCirculars() {
-        ResponseAll<List<Circular>> response = circularService.getAllCirculars();
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    @PostMapping("/create")
+    public ResponseEntity<ResponseModel<?>> createCircular(@RequestBody CircularRequest circularRequest){
+        return circularService.createCircular(circularRequest);
     }
 
-    @GetMapping("/{circularId}")
-    public ResponseEntity<ResponseAll<Circular>> getCircularById(@PathVariable Long circularId) {
-        ResponseAll<Circular> response = circularService.getCircularById(circularId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    @DeleteMapping("/delete/{circularId}")
+    public ResponseEntity<Object> deleteBookById(@PathVariable Long  circularId) {
+        return ResponseEntity.ok(circularService.deleteCircular(circularId));
     }
 
-    @PostMapping
-    public ResponseEntity<ResponseAll<Circular>> createCircular(@RequestBody CircularRequest circularRequest) {
-        ResponseAll<Circular> response = circularService.createCircular(circularRequest);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    @PutMapping("/update/bookId")
+    public ResponseEntity<ResponseModel<?>> updateBook(@RequestParam Long circularId , @RequestBody CircularRequest circularRequest) {
+        return circularService.updateCircular(circularId , circularRequest);
     }
 
-    @PutMapping("/{circularId}")
-    public ResponseEntity<ResponseAll<Circular>> updateCircular(
-            @PathVariable Long circularId,
-            @RequestBody CircularRequest circularRequest
-    ) {
-        ResponseAll<Circular> response = circularService.updateCircular(circularId, circularRequest);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    @GetMapping("/getAllCircular")
+    public ResponseEntity<ResponseModel<?>> getAllCircular() {
+        return circularService.getAllCircular();
     }
 
-    @DeleteMapping("/{circularId}")
-    public ResponseEntity<ResponseAll<String>> deleteCircular(@PathVariable Long circularId) {
-        ResponseAll<String> response = circularService.deleteCircular(circularId);
-        return new ResponseEntity<>(response, HttpStatus.OK);
-    }
 }
