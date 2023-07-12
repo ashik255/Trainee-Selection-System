@@ -14,10 +14,13 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Applicant {
+public class ApplicantEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long traineeId;
+    private Long applicantId;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
     private String firstName;
     private String lastName;
     private String gender;

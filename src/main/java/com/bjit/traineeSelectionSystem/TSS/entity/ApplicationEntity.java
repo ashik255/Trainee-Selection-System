@@ -6,17 +6,21 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
-@Table(name = "User")
+@Table(name = "Application")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+
+public class ApplicationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
-    private  String email;
-    private  String password;
-    private  String Role;
+    private Long applicationId;
+    @OneToOne
+    @JoinColumn(name = "applicant_id")
+    private ApplicantEntity applicant;
+
 }

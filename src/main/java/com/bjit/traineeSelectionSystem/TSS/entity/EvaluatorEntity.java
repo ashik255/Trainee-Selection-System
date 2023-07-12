@@ -16,7 +16,13 @@ public class EvaluatorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long evaluatorId;
-    private Long adminId;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+    @JoinColumn(name = "admin_id")
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private EvaluatorEntity evaluator;
     private  String Name;
     private  String email;
     private  String password;

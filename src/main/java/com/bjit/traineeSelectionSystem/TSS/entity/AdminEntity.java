@@ -12,10 +12,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Admin {
+public class AdminEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
-    private Long userId;
-
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 }
