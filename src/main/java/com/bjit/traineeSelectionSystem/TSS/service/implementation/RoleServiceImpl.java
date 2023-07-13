@@ -27,11 +27,10 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public RoleEntity getRole(String roleName) {
-        Optional<RoleEntity> roleEntity = roleRepository.findByRoleName(roleName);
+        Optional<RoleEntity> roleEntity = roleRepository.findByRoleName(roleName.toUpperCase());
         if (roleEntity.isPresent()) {
             return roleEntity.get();
-        } else {
-            throw new RoleDoesNotExistException("Your Requested '" + roleName + "' Role Does Not Exist");
         }
-    }
+            return roleRepository.save(new RoleEntity(null, roleName.toUpperCase()));
+        }
 }

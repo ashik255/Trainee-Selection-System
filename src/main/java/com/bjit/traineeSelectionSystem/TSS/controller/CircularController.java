@@ -23,7 +23,7 @@ public class CircularController {
         return ResponseEntity.ok(circularService.deleteCircular(circularId));
     }
 
-    @PutMapping("/update/bookId")
+    @PutMapping("/update/circularId")
     public ResponseEntity<ResponseModel<?>> updateBook(@RequestParam Long circularId , @RequestBody CircularRequest circularRequest) {
         return circularService.updateCircular(circularId , circularRequest);
     }

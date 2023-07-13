@@ -17,12 +17,8 @@ public class EvaluatorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long evaluatorId;
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
     @JoinColumn(name = "admin_id")
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private EvaluatorEntity evaluator;
+    private AdminEntity admin;
     private  String Name;
     private  String email;
     private  String password;

@@ -19,12 +19,12 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<ResponseModel> accountRegister(@Valid @RequestBody UserRequest userRequest) {
+    public ResponseEntity<ResponseModel> userRegister(@Valid @RequestBody UserRequest userRequest) {
         return userService.register(userRequest);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<ResponseModel> accountLogin(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<ResponseModel> userLogin(@Valid @RequestBody LoginRequest loginRequest) {
         return userService.login(loginRequest);
     }
 }

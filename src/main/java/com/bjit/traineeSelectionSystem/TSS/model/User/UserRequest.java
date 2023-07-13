@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -23,6 +24,6 @@ public class UserRequest {
     @NotEmpty(message = "Password is required")
     private String password;
     @NotEmpty(message = "Role is required")
-    private Set<String> roles;
+    private String roles;
 
 }

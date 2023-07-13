@@ -7,17 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "UploadMarks")
+@Table(name = "exam_category")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class UploadMarks {
+public class ExamCategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long marksId;
     private Long examId;
-    private Double marks;
-
+    private String examCategory;
+    private String description;
 }

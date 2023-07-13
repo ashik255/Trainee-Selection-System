@@ -1,4 +1,9 @@
 package com.bjit.traineeSelectionSystem.TSS.service;
 
-public class AdminService {
+import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
+import com.bjit.traineeSelectionSystem.TSS.model.User.LoginRequest;
+import org.springframework.http.ResponseEntity;
+
+public interface AdminService {
+    ResponseEntity<ResponseModel> login(LoginRequest loginRequest);
 }

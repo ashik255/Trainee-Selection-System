@@ -39,15 +39,14 @@ public class UserServiceImp implements UserService {
 
     @Override
     public ResponseEntity<ResponseModel> register(UserRequest userRequest) {
-        Optional<UserEntity> accountEntity = userRepository.findByEmail(userRequest.getEmail());
-        if (accountEntity.isPresent()) {
+        Optional<UserEntity> userEntity = userRepository.findByEmail(userRequest.getEmail());
+        if (userEntity.isPresent()) {
             throw new UserAlreadyExit("The requested email " + userRequest.getEmail() + " already registered");
         } else {
-            Set<RoleEntity> roles = new HashSet<>();
-            userRequest.getRoles().forEach(value -> roles.add(roleService.getRole(value)));
-            UserEntity accountEntity1 = UserEntity.builder().email(userRequest.getEmail()).password(passwordEncoder.encode(userRequest.getPassword())).roles(roles).build();
-            UserEntity savedEntity = userRepository.save(accountEntity1);
-            return new ResponseEntity<>(ResponseModel.builder().data(new UserResponse("Successfully registered with the  email " + savedEntity.getEmail() + ".")).build(), HttpStatus.CREATED);
+            RoleEntity role = roleService.getRole(userRequest.getRoles());
+            UserEntity userData = UserEntity.builder().email(userRequest.getEmail()).password(passwordEncoder.encode(userRequest.getPassword())).role(role).build();
+            userRepository.save(userData);
+            return new ResponseEntity<>(ResponseModel.builder().data(new UserResponse("Successfully registered with the  email " + userData.getEmail() + ".")).build(), HttpStatus.CREATED);
         }
     }
 

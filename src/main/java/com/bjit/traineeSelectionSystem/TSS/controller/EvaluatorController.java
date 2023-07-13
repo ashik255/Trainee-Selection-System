@@ -19,7 +19,7 @@ public class EvaluatorController {
         return evaluatorService.createEvaluator(evaluatorEntity);
     }
 
-    @GetMapping("/getAllCircular")
+    @GetMapping("/getAllEvaluator")
     public ResponseEntity<ResponseModel<?>> getAllCircular() {
         return evaluatorService.getAllEvaluator();
     }

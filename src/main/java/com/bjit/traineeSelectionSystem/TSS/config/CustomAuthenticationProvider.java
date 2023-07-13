@@ -1,6 +1,9 @@
 package com.bjit.traineeSelectionSystem.TSS.config;
 
+import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
+import com.bjit.traineeSelectionSystem.TSS.model.User.LoginRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -35,4 +38,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(Class<?> authenticationType) {
         return authenticationType.equals(UsernamePasswordAuthenticationToken.class);
     }
+
+//    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
+//
+//    }
+
+//    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
+//    }
 }
