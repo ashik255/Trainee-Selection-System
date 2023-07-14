@@ -1,8 +1,11 @@
 package com.bjit.traineeSelectionSystem.TSS.config;
 
+import com.bjit.traineeSelectionSystem.TSS.exception.InvalidAuthenticationCredentials;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.model.User.LoginRequest;
+import com.bjit.traineeSelectionSystem.TSS.model.User.LoginResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -38,6 +41,18 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public boolean supports(Class<?> authenticationType) {
         return authenticationType.equals(UsernamePasswordAuthenticationToken.class);
     }
+
+//    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
+//        try {
+//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+//        } catch (Exception ex) {
+//            throw new InvalidAuthenticationCredentials("Invalid Email and Password");
+//        }
+//        String jwtToken = jwtService.generateToken(userDetailsService.loadUserByUsername(loginRequest.getEmail()));
+//        LoginResponse loginResponse = LoginResponse.builder().token(jwtToken).build();
+//        return new ResponseEntity<>(ResponseModel.builder().data(loginResponse).build(), HttpStatus.OK);
+//    }
+//    }
 
 //    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
 //

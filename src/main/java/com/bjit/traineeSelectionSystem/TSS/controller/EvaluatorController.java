@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/admin/evaluate")
+@RequestMapping("evaluate")
 @RequiredArgsConstructor
 public class EvaluatorController {
     private final EvaluatorService evaluatorService;

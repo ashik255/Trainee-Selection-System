@@ -8,6 +8,7 @@ import com.bjit.traineeSelectionSystem.TSS.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Optional;
 
 @Service
@@ -16,10 +17,10 @@ public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
 
     @Override
-    public RoleEntity addRole(RoleEnum roleName) {
-        if (roleRepository.findByRoleName(roleName.name()).isEmpty()) {
+    public RoleEntity addRole(String roleName) {
+        if (roleRepository.findByRoleName(roleName).isEmpty()) {
             RoleEntity role = new RoleEntity();
-            role.setRoleName(roleName.name());
+            role.setRoleName(roleName);
             return roleRepository.save(role);
         }
         return null;
@@ -31,6 +32,10 @@ public class RoleServiceImpl implements RoleService {
         if (roleEntity.isPresent()) {
             return roleEntity.get();
         }
-            return roleRepository.save(new RoleEntity(null, roleName.toUpperCase()));
+        String roleValue = "";
+        if(Arrays.stream(RoleEnum.values()).anyMatch((t) -> t.name().equals(roleName.toUpperCase()))){
+            roleValue = roleName;
+        }
+            return roleRepository.save(addRole(roleValue));
         }
 }

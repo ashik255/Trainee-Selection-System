@@ -1,6 +1,7 @@
 package com.bjit.traineeSelectionSystem.TSS.service;
 
 import com.bjit.traineeSelectionSystem.TSS.entity.ApplicationEntity;
+import com.bjit.traineeSelectionSystem.TSS.model.ApplicantRequest;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import org.springframework.http.ResponseEntity;
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RoleService {
-    public RoleEntity addRole(RoleEnum role);
+    public RoleEntity addRole(String role);
 
     public RoleEntity getRole(String roleName);
 }
