@@ -16,5 +16,6 @@ public class Admit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long adminId;
-    private Long userId;
+    @OneToOne
+    private ApplicantEntity applicantEntity;
 }
