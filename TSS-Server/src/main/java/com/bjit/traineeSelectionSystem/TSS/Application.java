@@ -13,6 +13,7 @@ public class Application {
 
 		System.out.println("hii");
 		SpringApplication.run(Application.class, args);
+		System.out.println("hii");
 
 	}
 //	@Bean
