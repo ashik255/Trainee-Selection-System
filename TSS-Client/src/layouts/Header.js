@@ -77,7 +77,7 @@ const Header = () => {
         <Nav className="me-auto" navbar>
           <NavItem>
             <Link to="/starter" className="nav-link">
-              Starter
+              Home
             </Link>
           </NavItem>
           <NavItem>
@@ -113,7 +113,6 @@ const Header = () => {
             ></img>
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem header>Info</DropdownItem>
             <DropdownItem>My Account</DropdownItem>
             <DropdownItem>Edit Profile</DropdownItem>
             <DropdownItem divider />

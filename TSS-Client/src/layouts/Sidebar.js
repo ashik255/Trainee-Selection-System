@@ -5,43 +5,43 @@ import { Link, useLocation } from "react-router-dom";
 const navigation = [
   {
     title: "HOME",
-    href: "/starter",
-    icon: "bi bi-speedometer2",
+    href: "/home",
+    icon: "bi bi-house-door",
   },
   {
     title: "NOTIFICATION",
-    href: "/alerts",
+    href: "/notification",
     icon: "bi bi-bell",
   },
   {
     title: "CIRCULAR",
-    href: "/badges",
+    href: "/ciucular",
     icon: "bi bi-patch-check",
   },
   {
     title: "UPLOAD MARKS",
-    href: "/buttons",
+    href: "/uploadmarks",
     icon: "bi bi-hdd-stack",
   },
   {
     title: "EVALUATOR",
-    href: "/cards",
+    href: "/evaluator",
     icon: "bi bi-card-text",
   },
   {
     title: "Login",
     href: "/login",
-    icon: "bi bi-columns",
+    icon: "bi bi-box-arrow-in-right",
   },
   {
     title: "APPROVED",
-    href: "/table",
+    href: "/approved",
     icon: "bi bi-layout-split",
   },
   {
-    title: "Forms",
-    href: "/forms",
-    icon: "bi bi-textarea-resize",
+    title: "FINAL LIST",
+    href: "/finallist",
+    icon: "bi bi-list-ul",
   },
   {
     title: "Register",
@@ -49,9 +49,9 @@ const navigation = [
     icon: "bi bi-link",
   },
   {
-    title: "About",
-    href: "/about",
-    icon: "bi bi-people",
+    title: "NOTICE BOARD",
+    href: "/noticeboard",
+    icon: "bi bi-bag-dash",
   },
 ];
 

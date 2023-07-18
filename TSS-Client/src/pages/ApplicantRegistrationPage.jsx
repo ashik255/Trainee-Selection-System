@@ -131,6 +131,14 @@
 // };
 
 // export default RegistrationPage;
+{/* <FormGroup>
+                <Label for="exampleFile">File</Label>
+                <Input id="exampleFile" name="file" type="file" />
+                <FormText>
+                  This is some placeholder block-level help text for the above
+                  input. It's a bit lighter and easily wraps to a new line.
+                </FormText>
+              </FormGroup> */}
 
 import React, { useState } from "react";
 // import * as React from 'react';
