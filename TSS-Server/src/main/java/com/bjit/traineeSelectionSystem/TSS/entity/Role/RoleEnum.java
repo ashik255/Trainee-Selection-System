@@ -1,7 +1,8 @@
 package com.bjit.traineeSelectionSystem.TSS.entity.Role;
 
-public enum RoleEnum {
+public enum RoleEnum  {
     ADMIN,
     APPLICANT,
-    EVALUATOR
+    EVALUATOR;
+
 }
