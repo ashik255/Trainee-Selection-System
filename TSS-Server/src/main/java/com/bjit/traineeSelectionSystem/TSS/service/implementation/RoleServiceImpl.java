@@ -33,9 +33,6 @@ public class RoleServiceImpl implements RoleService {
             return roleEntity.get();
         }
         String roleValue = "";
-        if(Arrays.stream(RoleEnum.values()).anyMatch((t) -> t.name().equals(roleName.toUpperCase()))){
-            roleValue = roleName;
-        }
-            return roleRepository.save(addRole(roleValue));
+            return roleRepository.save(addRole(roleName.toUpperCase()));
         }
 }

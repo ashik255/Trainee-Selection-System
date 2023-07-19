@@ -26,7 +26,8 @@ public class UserEntity implements UserDetails {
     private Long userId;
     private  String email;
     private  String password;
-     @ManyToOne( fetch = FetchType.EAGER)
+    @ManyToOne
+    @Enumerated(EnumType.STRING)
     private RoleEntity role;
 
     @Override

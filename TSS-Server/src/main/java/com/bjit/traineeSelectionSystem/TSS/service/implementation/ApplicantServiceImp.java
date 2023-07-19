@@ -2,6 +2,8 @@ package com.bjit.traineeSelectionSystem.TSS.service.implementation;
 
 import com.bjit.traineeSelectionSystem.TSS.entity.ApplicantEntity;
 import com.bjit.traineeSelectionSystem.TSS.entity.CircularEntity;
+import com.bjit.traineeSelectionSystem.TSS.entity.Role.RoleEntity;
+import com.bjit.traineeSelectionSystem.TSS.entity.Role.RoleEnum;
 import com.bjit.traineeSelectionSystem.TSS.entity.UserEntity;
 import com.bjit.traineeSelectionSystem.TSS.model.ApplicantRequest;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +33,7 @@ public class ApplicantServiceImp implements ApplicantService {
         UserEntity user  = UserEntity.builder()
                 .email(applicantRequest.getEmail())
                 .password(applicantRequest.getPassword())
-
+//                .role(RoleEnum.APPLICANT)
                 .build();
         userRepository.save(user);
         ApplicantEntity applicant = ApplicantEntity.builder()
