@@ -14,8 +14,8 @@ const navigation = [
     icon: "bi bi-bell",
   },
   {
-    title: "CIRCULAR",
-    href: "/ciucular",
+    title: "CreateCircular",
+    href: "/createcircular",
     icon: "bi bi-patch-check",
   },
   {
