@@ -19,6 +19,7 @@ public class CircularEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long circularId;
     private String title;
+    private String imgLink;
     private String description;
     private Date startDate;
     private Date endDate;

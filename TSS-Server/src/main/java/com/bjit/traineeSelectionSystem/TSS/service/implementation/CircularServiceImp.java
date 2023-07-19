@@ -22,6 +22,7 @@ public class CircularServiceImp implements CircularService {
     public ResponseEntity<ResponseModel<?>> createCircular(CircularRequest circularRequest) {
         CircularEntity circularEntity = CircularEntity.builder()
                 .title(circularRequest.getTitle())
+                .imgLink(circularRequest.getImgLink())
                 .description(circularRequest.getDescription())
                 .startDate(circularRequest.getStartDate())
                 .endDate(circularRequest.getEndDate())
@@ -40,6 +41,7 @@ public class CircularServiceImp implements CircularService {
         CircularEntity circularEntity = circularRepository.findById(circularId).get();
         // Update the fields of existingCircular with the values from circular
         circularEntity.setTitle(circularRequest.getTitle());
+        circularEntity.setImgLink(circularRequest.getImgLink());
         circularEntity.setDescription(circularRequest.getDescription());
         circularEntity.setStartDate(circularRequest.getStartDate());
         circularEntity.setEndDate(circularRequest.getEndDate());
@@ -62,6 +64,8 @@ public class CircularServiceImp implements CircularService {
         circular.forEach(circularEntity -> circularResponses.add(
                 CircularEntity.builder()
                         .circularId(circularEntity.getCircularId())
+                        .imgLink(circularEntity.getImgLink())
+                        .description(circularEntity.getDescription())
                         .title(circularEntity.getDescription())
                         .startDate(circularEntity.getStartDate())
                         .endDate(circularEntity.getEndDate())

@@ -18,6 +18,8 @@ public class CircularRequest {
     private Long circularId;
     @NotBlank
     private String title;
+ @NotBlank
+    private String imgLink;
 
     @NotBlank
     private String description;
