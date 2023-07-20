@@ -34,7 +34,12 @@ const navigation = [
     icon: "bi bi-box-arrow-in-right",
   },
   {
-    title: "APPROVED",
+    title: "Application Table",
+    href: "/applicationtable",
+    icon: "bi bi-layout-split",
+  },
+  {
+    title: "APPROVED Table",
     href: "/approved",
     icon: "bi bi-layout-split",
   },

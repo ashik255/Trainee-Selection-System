@@ -1,0 +1,98 @@
+.container {
+  margin-top: 30px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notice-board {
+  margin-top: 30px;
+}
+
+.notice-board h2 {
+  margin-bottom: 15px;
+}
+
+.notice-board ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notice-board li {
+  margin-bottom: 10px;
+}
+
+.notice-title {
+  font-weight: bold;
+}
+
+.notice-title.first_call {
+  color: #007bff;
+}
+
+.notice-title.written_exam {
+  color: #ffc107;
+}
+
+.notice-title.aptitude_test {
+  color: #28a745;
+}
+
+.notice-title.technical_interview {
+  color: #17a2b8;
+}
+
+.notice-title.hr_interview {
+  color: #dc3545;
+}
+
+.notice-date {
+  margin-left: 10px;
+  color: #6c757d;
+}
+
+.notice-score {
+  margin-left: 10px;
+}
+
+.upload-form {
+  margin-top: 30px;
+}
+
+.upload-form label {
+  font-weight: bold;
+}
+
+.upload-form .form-group {
+  margin-bottom: 15px;
+}
+
+.upload-form button {
+  margin-top: 10px;
+}
+
+.success-message {
+  margin-top: 10px;
+}
+
+.total-score {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.submit-button {
+  margin-top: 30px;
+}
+
+.application-submitted {
+  margin-top: 30px;
+}

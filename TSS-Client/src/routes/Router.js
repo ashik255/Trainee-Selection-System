@@ -8,14 +8,18 @@ import AdmitCard from "../components/AdmitCard.js";
 import SendEmail from "../components/SendEmail.jsx";
 import Home from "../views/ui/Home.jsx";
 // import CreateCircular from "../views/ui/CreateCreateCircular.jsx";
-import FinalList from "../views/ui/FinalList.jsx";
-import NoticeBoard from "../views/ui/NoticeBoard.jsx";
 import Notification from "../views/ui/Notification.jsx";
-import Approved from "../views/ui/Approved.jsx";
-import UploadMarks from "../views/ui/UploadMarks.jsx";
+// import UploadMarks from "../views/ui/UploadMarks.jsx";
 import Evaluator from "../views/ui/Evaluator.jsx";
 import CreateCircular from "../views/ui/CreateCircular.jsx";
 import ViewCircular from "../views/ui/ViewCircular.jsx";
+import ApplicationTable from "../views/ui/ApplicationTable.jsx";
+import ApprovedTable from "../views/ui/ApprovedTable.jsx";
+import UploadMarks from "../views/UploadMarks/UploadMarks.jsx";
+import NoticeBoards from "../views/ui/NoticeBoards.jsx";
+import FinalList from "../views/FinalList/FinalList.jsx";
+import Pass from "../views/Pass.jsx";
+// import NoticeBoard from "../views/UploadMarks/UploadMarks.jsx";
 // import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
 
 /****Layouts*****/
@@ -52,12 +56,13 @@ const ThemeRoutes = [
       { path: "/createcircular", exact: true, element: <CreateCircular /> },
       { path: "/home", exact: true, element: <Home /> },
       { path: "/finallist", exact: true, element: <FinalList /> },
-      { path: "/noticeboard", exact: true, element: <NoticeBoard /> },
+      { path: "/noticeboard", exact: true, element: <NoticeBoards /> },
       { path: "/notification", exact: true, element: <Notification /> },
       { path: "uploadmarks", exact: true, element: <UploadMarks /> },
       { path: "/evaluator", exact: true, element: <Evaluator /> },
-      { path: "/approved", exact: true, element: <Approved /> },
+      { path: "/approved", exact: true, element: <ApprovedTable /> },
       { path: "/uploadmarks", exact: true, element: <UploadMarks /> },
+      {path:"/applicationtable",exact:true,element:<ApplicationTable/>},
 
       // { path: "/about", exact: true, element: <About /> },
       // { path: "/alerts", exact: true, element: <Alerts /> },
@@ -92,8 +97,16 @@ const ThemeRoutes = [
   {
     path: "/viewcircular",
     element: <ViewCircular />
-  }
+  },
+  {
+    path: "/approvedtable",
+    element: <ApprovedTable />
+  },
 
+  {
+    path: "/test",
+    element: <Pass />,
+  },
 
 ];
 

@@ -1,0 +1,114 @@
+.custom-card {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  /* Custom styles for the select dropdown */
+  .custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+  
+  .custom-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #f3f3f3;
+    padding: 8px 30px 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    width: 200px;
+  }
+  
+  .custom-select-arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #333;
+  }
+  
+  .custom-select:focus {
+    outline: none;
+    border-color: #7a7a7a;
+    box-shadow: 0 0 5px rgba(122, 122, 122, 0.5);
+  }
+  
+  .custom-select:hover {
+    border-color: #999;
+  }
+  
+  .custom-select:active {
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(85, 85, 85, 0.5);
+  }
+  
+  /* Custom styles for the table */
+  .custom-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .custom-table th {
+    text-align: left;
+    background-color: #f7f7f7;
+    font-weight: bold;
+  }
+  
+  .custom-table tr:hover {
+    background-color: #f2f2f2;
+  }
+  
+  .custom-table img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+  
+  .pagination li {
+    margin: 0 5px;
+  }
+  
+  .pagination-btn {
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination-btn.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+  }
