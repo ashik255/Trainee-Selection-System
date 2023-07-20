@@ -5,7 +5,7 @@ import SideLogo from "./SideLogo";
 const Logo = () => {
   return (
     <Link style={{textDecoration: 'none'}} to="/">
-      {/* <SideLogo /> */}
+      <SideLogo />
     </Link>
   );
 };

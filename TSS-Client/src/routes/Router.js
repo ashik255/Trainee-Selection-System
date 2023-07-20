@@ -9,8 +9,7 @@ import SendEmail from "../components/SendEmail.jsx";
 import Home from "../views/ui/Home.jsx";
 // import CreateCircular from "../views/ui/CreateCreateCircular.jsx";
 import Notification from "../views/ui/Notification.jsx";
-// import UploadMarks from "../views/ui/UploadMarks.jsx";
-import Evaluator from "../views/ui/Evaluator.jsx";
+// import UploadMarks from "../views/ui/UploadMarks.jsx";;
 import CreateCircular from "../views/ui/CreateCircular.jsx";
 import ViewCircular from "../views/ui/ViewCircular.jsx";
 import ApplicationTable from "../views/ui/ApplicationTable.jsx";
@@ -19,34 +18,36 @@ import UploadMarks from "../views/UploadMarks/UploadMarks.jsx";
 import NoticeBoards from "../views/ui/NoticeBoards.jsx";
 import FinalList from "../views/FinalList/FinalList.jsx";
 import Pass from "../views/Pass.jsx";
+import AddEvaluator from "../views/AddEvaluator/AddEvaluator.jsx";
 // import NoticeBoard from "../views/UploadMarks/UploadMarks.jsx";
 // import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
 
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 
-/***** Pages ****/
+// /***** Pages ****/
 
-const Starter = lazy(() => import("../views/Starter.js"));
-const About = lazy(() => import("../views/About.js"));
-const Alerts = lazy(() => import("../views/ui/Alerts"));
-const Badges = lazy(() => import("../views/ui/Badges"));
-const Buttons = lazy(() => import("../views/ui/Buttons"));
-// const Cards = lazy(() => import("../views/ui/Cards"));
-// const Grid = lazy(() => import("../views/ui/Grid"));
-const Tables = lazy(() => import("../views/ui/Tables"));
-const Forms = lazy(() => import("../views/ui/Forms"));
-const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
+// const Starter = lazy(() => import("../views/Starter.js"));
+// const About = lazy(() => import("../views/About.js"));
+// const Alerts = lazy(() => import("../views/ui/Alerts"));
+// const Badges = lazy(() => import("../views/ui/Badges"));
+// const Buttons = lazy(() => import("../views/ui/Buttons"));
+// // const Cards = lazy(() => import("../views/ui/Cards"));
+// // const Grid = lazy(() => import("../views/ui/Grid"));
+// const Tables = lazy(() => import("../views/ui/Tables"));
+// const Forms = lazy(() => import("../views/ui/Forms"));
+// const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 
 /*****Routes******/
 
 const ThemeRoutes = [
   {
     path: "/",
+    // element: <LoginPage />,
     element: <FullLayout />,
     children: [
-      { path: "/", element: <Navigate to="/starter" /> },
-      { path: "/starter", exact: true, element: <Starter /> },
+      // { path: "/", element: <Navigate to="/starter" /> },
+      // { path: "/starter", exact: true, element: <Starter /> },
       { path: "/home", exact: true, element: <Home /> },
       { path: "/login", exact: true, element: <LoginPage /> },
       { path: "/register", exact: true, element: <ApplicantRegistrationPage /> },
@@ -59,10 +60,14 @@ const ThemeRoutes = [
       { path: "/noticeboard", exact: true, element: <NoticeBoards /> },
       { path: "/notification", exact: true, element: <Notification /> },
       { path: "uploadmarks", exact: true, element: <UploadMarks /> },
-      { path: "/evaluator", exact: true, element: <Evaluator /> },
+      { path: "/evaluator", exact: true, element: <AddEvaluator /> },
       { path: "/approved", exact: true, element: <ApprovedTable /> },
       { path: "/uploadmarks", exact: true, element: <UploadMarks /> },
-      {path:"/applicationtable",exact:true,element:<ApplicationTable/>},
+      { path: "/applicationtable", exact: true, element: <ApplicationTable /> },
+      {
+        path: "/circular", exact: true,
+        element: <ViewCircular />
+      },
 
       // { path: "/about", exact: true, element: <About /> },
       // { path: "/alerts", exact: true, element: <Alerts /> },
@@ -94,10 +99,10 @@ const ThemeRoutes = [
     path: "/sendemail",
     element: <SendEmail />,
   },
-  {
-    path: "/viewcircular",
-    element: <ViewCircular />
-  },
+  // {
+  //   path: "/circular",
+  //   element: <ViewCircular />
+  // },
   {
     path: "/approvedtable",
     element: <ApprovedTable />

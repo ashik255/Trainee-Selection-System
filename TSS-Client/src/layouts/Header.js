@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
+import { Notifications as NotificationsIcon } from '@mui/icons-material';
 import {
   Navbar,
   Collapse,
@@ -19,7 +21,7 @@ import { Badge, Popover, OverlayTrigger } from 'react-bootstrap';
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
   const Handletoggle = () => {
@@ -28,6 +30,25 @@ const Header = () => {
   const showMobilemenu = () => {
     document.getElementById("sidebarArea").classList.toggle("showSidebar");
   };
+  const [showNotifications, setShowNotifications] = useState(false);
+
+  const handleNotificationToggle = () => {
+    setShowNotifications(!showNotifications);
+  };
+
+  const notificationList = (
+    <List>
+      <ListItem button>
+        <ListItemText primary="Notification 1" />
+      </ListItem>
+      <ListItem button>
+        <ListItemText primary="Notification 2" />
+      </ListItem>
+      <ListItem button>
+        <ListItemText primary="Notification 3" />
+      </ListItem>
+    </List>
+  );
 
 
     const pro = (
@@ -45,7 +66,7 @@ const Header = () => {
   
 
   return (
-    <Navbar color="success" dark expand="md">
+    <Navbar style={{backgroundColor:"#5584AC"}} expand="md">
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
           <img className="round" src={pic} alt="" />
@@ -81,39 +102,33 @@ const Header = () => {
             </Link>
           </NavItem>
           <NavItem>
-            <Link to="/about" className="nav-link">
-              About
+            <Link to="/circular" className="nav-link">
+              Circular
             </Link>
           </NavItem>
-          {/* <UncontrolledDropdown inNavbar nav>
-            <DropdownToggle caret nav>
-              DD Menu
-            </DropdownToggle>
-            <DropdownMenu end>
-              <DropdownItem>Option 1</DropdownItem>
-              <DropdownItem>Option 2</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Reset</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown> */}
+         
         </Nav>
-        <OverlayTrigger trigger="click" placement="bottom" overlay={pro} rootClose>
-      <Button variant="link" className="notification-button">
-        <i className="fas fa-bell"></i>
-        <Badge variant="danger">3</Badge>
-      </Button>
-    </OverlayTrigger>
+        <IconButton color="inherit" onClick={handleNotificationToggle}>
+        <NotificationsIcon />
+      </IconButton>
+      <Drawer
+        anchor="right"
+        open={showNotifications}
+        onClose={() => setShowNotifications(false)}
+      >
+        {notificationList}
+      </Drawer>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle color="primary">
+          <DropdownToggle color="">
             <img
               src={user1}
               alt="profile"
               className="rounded-circle"
-              width="30"
+              width="45"
             ></img>
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem>My Account</DropdownItem>
+            <DropdownItem >My Account</DropdownItem>
             <DropdownItem>Edit Profile</DropdownItem>
             <DropdownItem divider />
             <DropdownItem>My Balance</DropdownItem>

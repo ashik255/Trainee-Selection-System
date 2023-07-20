@@ -19,12 +19,17 @@ const navigation = [
     icon: "bi bi-patch-check",
   },
   {
+    title: "Circular",
+    href: "/circular",
+    icon: "bi bi-patch-check",
+  },
+  {
     title: "UPLOAD MARKS",
     href: "/uploadmarks",
     icon: "bi bi-hdd-stack",
   },
   {
-    title: "EVALUATOR",
+    title: "Add EVALUATOR",
     href: "/evaluator",
     icon: "bi bi-card-text",
   },
