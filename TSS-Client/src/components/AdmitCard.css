@@ -1,0 +1,58 @@
+/* AdmitCard.css */
+
+/* Container styles */
+.pdf-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styles */
+  .admit-card-header {
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    max-width: 100px;
+  }
+  
+  .admit-card-header h4 {
+    margin: 10px 0;
+  }
+  
+  /* Footer styles */
+  .admit-card-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+  }
+  
+  .footer-heading {
+    font-weight: bold;
+  }
+  
+  .admit-card-footer ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  /* QR code styles */
+  .qr-code {
+    margin-top: 20px;
+  }
+  
+  /* Image styles */
+  #pdf-image {
+    margin-top: 20px;
+    max-width: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Button styles */
+  button {
+    margin-top: 30px;
+  }
+  
