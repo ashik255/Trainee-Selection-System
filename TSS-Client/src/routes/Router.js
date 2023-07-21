@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 import LoginPage from "../pages/LoginPage.js";
 import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
 import QrCodeGenerator from "../components/QrCodeGenerator.jsx";
-import AdmitCard from "../components/AdmitCard.js";
+import AdmitCard from "../components/AdmitCard.jsx";
 import SendEmail from "../components/SendEmail.jsx";
 import Home from "../views/ui/Home.jsx";
 // import CreateCircular from "../views/ui/CreateCreateCircular.jsx";
@@ -58,7 +58,7 @@ const ThemeRoutes = [
       { path: "/home", exact: true, element: <Home /> },
       { path: "/finallist", exact: true, element: <FinalList /> },
       { path: "/noticeboard", exact: true, element: <NoticeBoards /> },
-      { path: "/notification", exact: true, element: <Notification /> },
+      // { path: "/notification", exact: true, element: <Notification /> },
       { path: "uploadmarks", exact: true, element: <UploadMarks /> },
       { path: "/evaluator", exact: true, element: <AddEvaluator /> },
       { path: "/approved", exact: true, element: <ApprovedTable /> },
@@ -67,6 +67,10 @@ const ThemeRoutes = [
       {
         path: "/circular", exact: true,
         element: <ViewCircular />
+      },
+      {
+        path: "/admitcard",
+        element: <AdmitCard />,
       },
 
       // { path: "/about", exact: true, element: <About /> },

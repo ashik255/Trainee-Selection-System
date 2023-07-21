@@ -50,21 +50,6 @@ const Header = () => {
     </List>
   );
 
-
-    const pro = (
-      <Popover id="notification-popover">
-        <Popover.Content>
-          <ul>
-            <li>Notification 1</li>
-            <li>Notification 2</li>
-            <li>Notification 3</li>
-          </ul>
-          <Button variant="primary">View All</Button>
-        </Popover.Content>
-      </Popover>
-    );
-  
-
   return (
     <Navbar style={{backgroundColor:"#5584AC"}} expand="md">
       <div className="d-flex align-items-center">
@@ -93,7 +78,6 @@ const Header = () => {
           )}
         </Button>
       </div>
-
       <Collapse navbar isOpen={isOpen}>
         <Nav className="me-auto" navbar>
           <NavItem>

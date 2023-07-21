@@ -9,8 +9,8 @@ const navigation = [
     icon: "bi bi-house-door",
   },
   {
-    title: "NOTIFICATION",
-    href: "/notification",
+    title: "Admit Card",
+    href: "/admitcard",
     icon: "bi bi-bell",
   },
   {

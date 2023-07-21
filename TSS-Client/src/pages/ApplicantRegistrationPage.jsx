@@ -24,7 +24,7 @@ const ApplicantRegistrationPage = () => {
   const handleSubmit = (e) => {
 
     e.preventDefault();
-     const role = {role:["applicant"]};
+    const role = { role: ["applicant"] };
     // Prepare the form data
     const formData = {
       email,
