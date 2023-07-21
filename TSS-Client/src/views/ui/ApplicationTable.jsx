@@ -112,7 +112,7 @@ const ApplicationTable = () => {
 
   return (
     <div>
-      <ApprovedTable approvedData={tableData} ></ApprovedTable>
+      {/* <ApprovedTable approvedData={tableData} ></ApprovedTable> */}
       <Card className="custom-card">
         <CardBody>
           <div className="custom-select-wrapper">

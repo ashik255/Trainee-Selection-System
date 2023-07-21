@@ -17,7 +17,6 @@ import ApprovedTable from "../views/ui/ApprovedTable.jsx";
 import UploadMarks from "../views/UploadMarks/UploadMarks.jsx";
 import NoticeBoards from "../views/ui/NoticeBoards.jsx";
 import FinalList from "../views/FinalList/FinalList.jsx";
-import Pass from "../views/Pass.jsx";
 import AddEvaluator from "../views/AddEvaluator/AddEvaluator.jsx";
 // import NoticeBoard from "../views/UploadMarks/UploadMarks.jsx";
 // import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
@@ -110,11 +109,6 @@ const ThemeRoutes = [
   {
     path: "/approvedtable",
     element: <ApprovedTable />
-  },
-
-  {
-    path: "/test",
-    element: <Pass />,
   },
 
 ];

@@ -41,7 +41,7 @@ public class FileUploadServiceImp  implements FileUploadService {
 
         ApplicantEntity applicantEntity= (ApplicantEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Path path= fileUploaderUtils.uploadFile(image, true, String.valueOf(applicantEntity.getApplicantId()));
-        applicationRepository.(String.valueOf(path));
+//        applicationRepository.(String.valueOf(path));
         ResponseModel r = ResponseModel.builder()
                 .data(String.valueOf(path))
                 .build();

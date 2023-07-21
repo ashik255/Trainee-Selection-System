@@ -8,16 +8,19 @@ import com.bjit.traineeSelectionSystem.TSS.entity.UserEntity;
 import com.bjit.traineeSelectionSystem.TSS.model.ApplicantRequest;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.repository.ApplicantRepository;
+import com.bjit.traineeSelectionSystem.TSS.repository.RoleRepository;
 import com.bjit.traineeSelectionSystem.TSS.repository.UserRepository;
 import com.bjit.traineeSelectionSystem.TSS.service.ApplicantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.management.relation.Role;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,14 +29,23 @@ public class ApplicantServiceImp implements ApplicantService {
 
     private final ApplicantRepository applicantRepository;
     private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public ResponseEntity<ResponseModel<?>> createApplicant(ApplicantRequest applicantRequest) {
 
+        String roleName = applicantRequest.getRole();
+        if (roleName == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        RoleEntity role = roleRepository.findByRoleName(roleName).orElse(null);
+//        RoleEntity role = roleRepository.findByRoleName(applicantRequest.getRole()).get();
         UserEntity user  = UserEntity.builder()
                 .email(applicantRequest.getEmail())
                 .password(applicantRequest.getPassword())
-//                .role(RoleEnum.APPLICANT)
+                .password(passwordEncoder.encode(applicantRequest.getPassword()))
+              .role(role)
                 .build();
         userRepository.save(user);
         ApplicantEntity applicant = ApplicantEntity.builder()
@@ -62,6 +74,11 @@ public class ApplicantServiceImp implements ApplicantService {
 
     @Override
     public ResponseEntity<ResponseModel<?>> updateApplication(Long applicantId, ApplicantEntity applicantEntity) {
+        Optional<ApplicantEntity> optionalApplicant = applicantRepository.findById(applicantId);
+        if (optionalApplicant.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
         ApplicantEntity applicant = applicantRepository.findById(applicantId).get();
         // Update the fields of existingCircular with the values from circular
         applicant.setFirstName(applicantEntity.getFirstName());

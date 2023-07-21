@@ -7,18 +7,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "FinalList")
+@Table(name = "Admit")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class FinalList {
+public class AdmitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long fTId;
-    private Long circularId;
-    private Long traineeId;
-    private String ranks;
-
+    private Long adminId;
+    @OneToOne
+    private ApprovedEntity approved;
 }

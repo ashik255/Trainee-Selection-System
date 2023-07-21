@@ -25,6 +25,7 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<ResponseModel> userLogin(@Valid @RequestBody LoginRequest loginRequest) {
+        System.out.println(loginRequest);
         return userService.login(loginRequest);
     }
 }

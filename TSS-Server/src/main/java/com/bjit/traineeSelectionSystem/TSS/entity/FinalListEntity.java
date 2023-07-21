@@ -7,22 +7,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "UploadMarks")
+@Table(name = "FinalList")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 
-public class MarksEntity {
+public class FinalListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long marksId;
-
+    private Long fTId;
     @ManyToOne
-    private ApprovedEntity approved;
+    private MarksEntity marks;
+    private String ranks;
 
-    private Double written_exam;
-    private Double aptitude_test;
-    private Double technical_interview;
-    private Double hr_interview;
 }

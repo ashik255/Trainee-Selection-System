@@ -1,6 +1,7 @@
 /* UserRegistrationForm.css */
 .user-registration-form {
-    max-width: 450px;
+    max-width: 480px;
+    max-height: 480px;
     margin: 0 auto;
     padding: 30px;
     border: 1px solid #ddd;

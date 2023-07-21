@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Paper, Card, CardContent, CardMedia, Typography, Button, Grid } from '@mui/material';
 import axios from 'axios';
-import { G } from '@react-pdf/renderer';
+// import { G } from '@react-pdf/renderer';
 
 const ViewCircular = () => {
   const [data, setData] = useState([]);
@@ -10,7 +10,7 @@ const ViewCircular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/admin/getAllCircular');
+        const response = await axios.get('http://localhost:8081/admin/circular/getAllCircular');
         setData(response.data.data);
 
         console.log('Fetched Data:', response.data.data);

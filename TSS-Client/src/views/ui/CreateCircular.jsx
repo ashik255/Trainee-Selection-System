@@ -31,7 +31,7 @@ const CreateCircular = () => {
 
     try {
       const clonedFormValues = JSON.parse(JSON.stringify(formValues));
-      const response = await axios.post('http://localhost:8081/admin/create', clonedFormValues);
+      const response = await axios.post('http://localhost:8081/admin/circular/create', clonedFormValues);
 
       // If the response is successful, you can perform any additional actions here.
       console.log('Form submitted successfully!');
@@ -46,8 +46,9 @@ const CreateCircular = () => {
 
   return (
     <Container maxWidth="sm">
-      <Paper elevation={3} style={{ padding: '20px' }}>
+      <Paper elevation={3} style={{ padding: '20px', borderRadius: '10px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
         <form onSubmit={handleSubmit}>
+          {/* Title */}
           <TextField
             name="title"
             label="Title"
@@ -55,8 +56,11 @@ const CreateCircular = () => {
             onChange={handleChange}
             fullWidth
             required
+            variant="outlined"
+            style={{ marginBottom: '15px' }}
           />
-          <br />
+
+          {/* Image Link */}
           <TextField
             name="imgLink"
             label="Image Link"
@@ -64,8 +68,11 @@ const CreateCircular = () => {
             onChange={handleChange}
             fullWidth
             required
+            variant="outlined"
+            style={{ marginBottom: '15px' }}
           />
-          <br />
+
+          {/* Description */}
           <TextField
             name="description"
             label="Description"
@@ -77,9 +84,11 @@ const CreateCircular = () => {
             rows={4}
             variant="outlined"
             inputProps={{ style: { overflow: 'auto' } }}
+            style={{ marginBottom: '15px' }}
           />
-          <br />
-          <Grid container spacing={2}>
+
+          {/* Date Pickers */}
+          <Grid container spacing={2} style={{ marginBottom: '15px' }}>
             <Grid item xs={12} sm={6}>
               <TextField
                 name="startDate"
@@ -89,6 +98,8 @@ const CreateCircular = () => {
                 onChange={(e) => handleDateChange(e.target.value, 'startDate')}
                 fullWidth
                 required
+                variant="outlined"
+                InputLabelProps={{ shrink: true }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -100,17 +111,24 @@ const CreateCircular = () => {
                 onChange={(e) => handleDateChange(e.target.value, 'endDate')}
                 fullWidth
                 required
+                variant="outlined"
+                InputLabelProps={{ shrink: true }}
               />
             </Grid>
           </Grid>
 
-          <br />
-          <Button type="submit" variant="contained" color="primary">
+          {/* Submit Button */}
+          <Button type="submit" variant="contained" color="primary" style={{ width: '100%', marginBottom: '15px' }}>
             Create
           </Button>
-          {successMessage && <div style={{ color: 'green', marginTop: '8px' }}>{successMessage}</div>}
-        </form>
 
+          {/* Success Message */}
+          {successMessage && (
+            <div style={{ color: 'green', marginTop: '8px', textAlign: 'center', fontSize: '16px' }}>
+              {successMessage}
+            </div>
+          )}
+        </form>
       </Paper>
     </Container>
   );

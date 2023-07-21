@@ -13,6 +13,6 @@ public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     private String roleName;
 }

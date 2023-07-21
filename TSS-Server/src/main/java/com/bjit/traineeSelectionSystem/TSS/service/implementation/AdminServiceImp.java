@@ -1,5 +1,6 @@
 package com.bjit.traineeSelectionSystem.TSS.service.implementation;
 
+import com.bjit.traineeSelectionSystem.TSS.entity.Role.RoleEntity;
 import com.bjit.traineeSelectionSystem.TSS.exception.InvalidAuthenticationCredentials;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.model.User.LoginRequest;
@@ -20,6 +21,7 @@ public class AdminServiceImp implements AdminService {
     private final AuthenticationManager authenticationManager;
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+
     @Override
     public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
         try {

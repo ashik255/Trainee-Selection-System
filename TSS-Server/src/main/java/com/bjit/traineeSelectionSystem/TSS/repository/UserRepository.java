@@ -1,5 +1,7 @@
 package com.bjit.traineeSelectionSystem.TSS.repository;
 
+import com.bjit.traineeSelectionSystem.TSS.entity.ApplicantEntity;
+import com.bjit.traineeSelectionSystem.TSS.entity.Role.RoleEntity;
 import com.bjit.traineeSelectionSystem.TSS.entity.UserEntity;
 import org.apache.catalina.User;
 import org.springframework.stereotype.Repository;
@@ -11,4 +13,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity,Long> {
     Optional<UserEntity> findByEmail(String email);
 
+    ApplicantEntity save(RoleEntity role);
 }

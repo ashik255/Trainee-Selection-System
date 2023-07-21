@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ApplicantController {
     private final ApplicantService applicantService;
-    @PostMapping("/create")
+    @PostMapping("/register")
     public ResponseEntity<ResponseModel<?>> createApplicant(@RequestBody ApplicantRequest applicantRequest){
         return applicantService.createApplicant(applicantRequest);
     }

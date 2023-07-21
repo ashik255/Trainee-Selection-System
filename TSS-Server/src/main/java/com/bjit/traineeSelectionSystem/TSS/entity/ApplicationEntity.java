@@ -19,8 +19,12 @@ public class ApplicationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long applicationId;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "applicant_id")
     private ApplicantEntity applicant;
+
+    @ManyToOne
+    @JoinColumn(name = "circular_id")
+    private CircularEntity circular;
 
 }

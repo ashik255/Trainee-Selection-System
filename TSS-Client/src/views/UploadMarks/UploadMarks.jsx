@@ -137,7 +137,7 @@ const UploadMarks = () => {
       <Row>
         <Col>
           <div className="notice-board">
-            <h2>All Marks</h2>
+            <h2 className='text-left'>Marks</h2>
             <ul>
               {filteredNotices.map((notice) => (
                 <li key={notice.id}>

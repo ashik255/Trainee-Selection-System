@@ -25,7 +25,6 @@ const AdmitCard = () => {
     }
   };
 
-
   return (
     <div>
     <Container className="p-4 pdf-container" ref={containerRef}>

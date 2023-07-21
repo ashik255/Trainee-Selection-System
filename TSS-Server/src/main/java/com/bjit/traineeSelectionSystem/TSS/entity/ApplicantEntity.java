@@ -23,6 +23,7 @@ public class ApplicantEntity {
     private UserEntity user;
     private String firstName;
     private String lastName;
+    private String role;
     private String gender;
     private Date dateOfBirth;
     private String contact;

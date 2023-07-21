@@ -106,9 +106,9 @@ const Sidebar = () => {
             tag="a"
             target="_blank"
             className="mt-3"
-            href="https://www.wrappixel.com/templates/xtreme-react-redux-admin/?ref=33"
+            href="https://bjitacademy.com/"
           >
-            Upgrade To Pro
+            BJIT ACADEMY
           </Button>
         </Nav>
       </div>

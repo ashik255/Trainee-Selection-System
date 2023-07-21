@@ -12,7 +12,6 @@ const QrCodeGenerator = () => {
 
   const generateQRCode = () => {
     setQrCodeData(inputData);
-    ggg;
   };
 
   const fetchDataFromApi = async () => {

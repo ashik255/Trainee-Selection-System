@@ -1,5 +1,4 @@
 
-
 import React, { useState } from "react";
 import { TextField, Button, Grid, Typography, Container, FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import { NavLink } from "react-router-dom";
@@ -19,12 +18,14 @@ const ApplicantRegistrationPage = () => {
   const [address, setAddress] = useState("");
   const [photo, setPhoto] = useState("");
   const [cv, setCV] = useState("");
+  const [role, setRole] = useState({ roleName: "APPLICANT" });
   // const [role, setRole] = useState("");
 
   const handleSubmit = (e) => {
 
     e.preventDefault();
-    const role = { role: ["applicant"] };
+    // const roles = { roles: ["APPLICANT"] };
+ 
     // Prepare the form data
     const formData = {
       email,
@@ -41,13 +42,14 @@ const ApplicantRegistrationPage = () => {
       address,
       photo,
       cv,
-      role
+      role: role.roleName
     };
-    const formData1 = new FormData();
+
+    
 
     // Perform the registration logic by sending the form data to the server
     // Replace the endpoint URL with your server's endpoint
-    fetch('http://localhost:8081/applicant/create', {
+    fetch('http://localhost:8081/applicant/register', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -124,6 +126,8 @@ const ApplicantRegistrationPage = () => {
               onChange={(e) => setDateOfBirth(e.target.value)}
               fullWidth
               required
+              variant="outlined"
+                InputLabelProps={{ shrink: true }}
             />
           </Grid>
           <Grid item xs={6}>

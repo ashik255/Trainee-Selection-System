@@ -1,5 +1,6 @@
 package com.bjit.traineeSelectionSystem.TSS.entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,15 +8,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Admit")
+@Table(name = "Approved")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Admit {
+public class ApprovedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long adminId;
-    @OneToOne
-    private ApplicantEntity applicantEntity;
+    private Long approvedId;
+
+    @ManyToOne
+    private ApplicantEntity applicant;
 }
