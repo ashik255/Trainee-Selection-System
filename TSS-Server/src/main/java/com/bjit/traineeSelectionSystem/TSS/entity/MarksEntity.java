@@ -18,11 +18,13 @@ public class MarksEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long marksId;
 
-    @ManyToOne
-    private ApprovedEntity approved;
-
+    private Long approvalId;
     private Double written_exam;
     private Double aptitude_test;
+    private Boolean written_aptitude_passed = false;
     private Double technical_interview;
+    private Boolean technical_passed = false;
     private Double hr_interview;
+    private Boolean hr_passed = false;
+    private Double total_marks;
 }

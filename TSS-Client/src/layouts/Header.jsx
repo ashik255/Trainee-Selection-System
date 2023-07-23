@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Drawer, IconButton, List, ListItem, ListItemText } from '@mui/material';
-import { Notifications as NotificationsIcon } from '@mui/icons-material';
+import {
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import { Notifications as NotificationsIcon } from "@mui/icons-material";
 import {
   Navbar,
   Collapse,
   Nav,
   NavItem,
   NavbarBrand,
-  UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
@@ -17,7 +22,6 @@ import {
 } from "reactstrap";
 import pic from "../assets/images/logos/bjit logo.png";
 import user1 from "../assets/images/users/user1.jpg";
-import { Badge, Popover, OverlayTrigger } from 'react-bootstrap';
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -51,10 +55,10 @@ const Header = () => {
   );
 
   return (
-    <Navbar style={{backgroundColor:"#5584AC"}} expand="md">
+    <Navbar style={{ backgroundColor: "#5584AC" }} expand="md">
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
-          <img className="round" src={pic} alt="" />
+          <img  style={{width:'70px', height:'50px'}} className="rounded w-10" src={pic} alt="" />
         </NavbarBrand>
         <Button
           color="primary"
@@ -79,29 +83,34 @@ const Header = () => {
         </Button>
       </div>
       <Collapse navbar isOpen={isOpen}>
-        <Nav className="me-auto" navbar>
+            <Link to="/" className="nav-lin" navbar>
+            <img  style={{width:'50px', height:'50px'}} className="rounde" src={pic} alt="" />
+            </Link>
+        <Nav className="mx-auto " navbar>
+        
+          {/* <div className="ml-"> */}
           <NavItem>
-            <Link to="/starter" className="nav-link">
-              Home
+            <Link to="/" className="nav-link">
+              <h5 className="text-center border">Home</h5>
             </Link>
           </NavItem>
-          <NavItem>
-            <Link to="/circular" className="nav-link">
-              Circular
+          <NavItem className="m">
+            <Link to="/login" className="nav-link">
+              Login
             </Link>
           </NavItem>
-         
+          {/* </div> */}
         </Nav>
         <IconButton color="inherit" onClick={handleNotificationToggle}>
-        <NotificationsIcon />
-      </IconButton>
-      <Drawer
-        anchor="right"
-        open={showNotifications}
-        onClose={() => setShowNotifications(false)}
-      >
-        {notificationList}
-      </Drawer>
+          <NotificationsIcon />
+        </IconButton>
+        <Drawer
+          anchor="right"
+          open={showNotifications}
+          onClose={() => setShowNotifications(false)}
+        >
+          {notificationList}
+        </Drawer>
         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
           <DropdownToggle color="">
             <img
@@ -112,7 +121,7 @@ const Header = () => {
             ></img>
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem >My Account</DropdownItem>
+            <DropdownItem>My Account</DropdownItem>
             <DropdownItem>Edit Profile</DropdownItem>
             <DropdownItem divider />
             <DropdownItem>My Balance</DropdownItem>

@@ -111,3 +111,30 @@
 // };
 
 // export default SignIn;
+
+// <Route element={<AdminRoute />}>
+// <Route path="admin" element={<AdminLayout />}>
+//   <Route path="/admin/dashboard" element={<Starter />} />
+//   <Route path="/admin/register/trainee" element={<TraineeRegister />} />
+//   <Route path="/admin/register/trainer" element={<TrainerRegister />} />
+//   <Route path="/admin/register/batch" element={<Batch />} />
+//   <Route path="/admin/assign/trainee" element={<AssignTrainee />} />
+//   <Route path="/admin/assign/trainer" element={<AssignTrainer />} />
+//   <Route path="/admin/create/course" element={<Course/>} />
+//   <Route path="/admin/schedule/batch" element={<ScheduleBatch />} />
+// </Route>
+// </Route>
+
+// import React from 'react'
+// import {Navigate, Outlet} from 'react-router-dom'
+
+// function AdminRoute() {
+
+//   // Retrieve user role from your authentication logic
+//   const user = JSON.parse(localStorage.getItem("user"));
+//   const isAdmin = user && user.role === "Admin";
+//   return isAdmin ? <Outlet /> : <Navigate to="/signin" />;
+
+// }
+
+// export default AdminRoute;

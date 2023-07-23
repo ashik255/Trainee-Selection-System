@@ -1,8 +1,11 @@
 package com.bjit.traineeSelectionSystem.TSS.service;
 
+import com.bjit.traineeSelectionSystem.TSS.entity.CircularEntity;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.model.circular.CircularRequest;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface CircularService {
 //    ResponseEntity<ResponseModel> addCircular(CircularEntity circularEntity);
@@ -16,7 +19,11 @@ public interface CircularService {
 
     Object deleteCircular(Long circularId);
 
-    ResponseEntity<ResponseModel<?>> deleteCircular();
+    ResponseEntity<ResponseModel<?>> applied(Long circularId , Long applicantId);
+
+    ResponseEntity<ResponseModel<?>> findApplicant(Long applicantId);
+//    ResponseEntity<List<CircularEntity>> findApplicant(Long applicantId);
+
 
 //    Object deleteCircular(Long id);
 }

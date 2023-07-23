@@ -43,13 +43,12 @@ public class ApplicantServiceImp implements ApplicantService {
 //        RoleEntity role = roleRepository.findByRoleName(applicantRequest.getRole()).get();
         UserEntity user  = UserEntity.builder()
                 .email(applicantRequest.getEmail())
-                .password(applicantRequest.getPassword())
                 .password(passwordEncoder.encode(applicantRequest.getPassword()))
-              .role(role)
+                .role(role)
                 .build();
-        userRepository.save(user);
+        UserEntity savedUser = userRepository.save(user);
         ApplicantEntity applicant = ApplicantEntity.builder()
-                .user(user)
+                .user(savedUser)
                 .address(applicantRequest.getAddress())
                 .cgpa(applicantRequest.getCgpa())
                 .contact(applicantRequest.getContact())
@@ -80,7 +79,6 @@ public class ApplicantServiceImp implements ApplicantService {
         }
 
         ApplicantEntity applicant = applicantRepository.findById(applicantId).get();
-        // Update the fields of existingCircular with the values from circular
         applicant.setFirstName(applicantEntity.getFirstName());
         applicant.setLastName(applicantEntity.getLastName());
         applicant.setUser(applicantEntity.getUser());

@@ -1,8 +1,10 @@
 package com.bjit.traineeSelectionSystem.TSS.service.implementation;
 
+import com.bjit.traineeSelectionSystem.TSS.entity.ApplicantEntity;
 import com.bjit.traineeSelectionSystem.TSS.entity.CircularEntity;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import com.bjit.traineeSelectionSystem.TSS.model.circular.CircularRequest;
+import com.bjit.traineeSelectionSystem.TSS.repository.ApplicantRepository;
 import com.bjit.traineeSelectionSystem.TSS.repository.CircularRepository;
 import com.bjit.traineeSelectionSystem.TSS.service.CircularService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +20,7 @@ import java.util.List;
 public class CircularServiceImp implements CircularService {
 
     private final CircularRepository circularRepository;
+    private final ApplicantRepository applicantRepo;
     @Override
     public ResponseEntity<ResponseModel<?>> createCircular(CircularRequest circularRequest) {
         CircularEntity circularEntity = CircularEntity.builder()
@@ -87,20 +90,64 @@ public class CircularServiceImp implements CircularService {
     }
 
     @Override
-    public ResponseEntity<ResponseModel<?>> deleteCircular() {
-        return null;
+    public ResponseEntity<ResponseModel<?>> applied(Long circularId , Long applicantId) {
+        CircularEntity circular = circularRepository.findById(circularId).get();
+        List<ApplicantEntity> applicantList = circular.getApplicants();
+        applicantList.add(applicantRepo.findById(applicantId).get());
+        circular.setApplicants(applicantList);
+        circularRepository.save(circular);
+
+        ResponseModel response = ResponseModel.builder()
+                .data("Application Successful")
+                .build();
+        return ResponseEntity.ok(response);
     }
-    //        try {
-//            if (circularRepository.existsById(circularId)) {
-//                circularRepository.deleteById(circularId);
-//                return "Circular is deleted successfully";
-//            } else {
-//                throw new BookServiceException("Book not found");
+
+//    @Override
+//    public ResponseEntity<ResponseModel<?>> findApplicant(Long applicantId) {
+//
+//        ApplicantEntity applicant = applicantRepo.findById(applicantId).get();
+//        List<CircularEntity> circulars = circularRepository.findByApplicants(applicant);
+//        ResponseModel response = ResponseModel.builder()
+//                .data(circulars)
+//                .build();
+//        return ResponseEntity.ok(response);
+//    }
+    @Override
+    public ResponseEntity<ResponseModel<?>> findApplicant(Long applicantId) {
+
+        ApplicantEntity thisapplicant = applicantRepo.findById(applicantId).get();
+        List<CircularEntity> selectedcirculars = new ArrayList<>();
+
+        List<CircularEntity> circulars = circularRepository.findAll();
+        for( CircularEntity thisCircular : circulars ){
+            List<ApplicantEntity> applicants = thisCircular.getApplicants();
+            System.out.println("The size is : " + applicants.size());
+            if( applicants.contains(thisapplicant) ){
+                selectedcirculars.add(thisCircular);
+            }
+        }
+        System.out.println("The final result is : " + selectedcirculars.size());
+        ResponseModel response = ResponseModel.builder()
+                .data(selectedcirculars)
+                .build();
+        return ResponseEntity.ok(response);
+    }
+
+//    @Override
+//    public ResponseEntity<List<CircularEntity>> findApplicant(Long applicantId) {
+//
+//        ApplicantEntity thisapplicant = applicantRepo.findById(applicantId).get();
+//        List<CircularEntity> selectedcirculars = new ArrayList<>();
+//
+//        List<CircularEntity> circulars = circularRepository.findAll();
+//        for( CircularEntity thisCircular : circulars ){
+//            List<ApplicantEntity> applicants = thisCircular.getApplicants();
+//            if( applicants.contains(thisapplicant) ){
+//                selectedcirculars.add(thisCircular);
 //            }
-//        }catch (Exception e){
-//            throw new BookServiceException("An error occurred while retrieving the book by ID");
 //        }
+//        return ResponseEntity.ok(selectedcirculars);
 //    }
 
-
-    }
+}

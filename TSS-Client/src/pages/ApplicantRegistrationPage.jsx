@@ -199,14 +199,14 @@ const ApplicantRegistrationPage = () => {
               required
             />
           </Grid>
-          {/* <Grid item xs={6}>
+          <Grid item xs={6}>
             <Typography variant="p">Upload Photo</Typography>
             <input type="file" accept="image/*" onChange={(e) => setPhoto(e.target.files[0])} />
           </Grid>
           <Grid item xs={6}>
             <Typography variant="p">Upload CV</Typography>
             <input type="file" accept=".pdf,.doc,.docx" onChange={(e) => setCV(e.target.files[0])} />
-          </Grid> */}
+          </Grid>
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
               Register

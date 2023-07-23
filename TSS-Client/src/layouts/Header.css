@@ -1,0 +1,48 @@
+Header.css
+
+/* Style the profile image in the dropdown */
+.profile-image {
+    border: 2px solid #fff; /* Add a border around the profile image */
+  }
+  
+  /* Add a background color to the notification list */
+  .MuiDrawer-paper {
+    background-color: #f5f5f5;
+    width: 300px;
+  }
+  
+  /* Style the notification list items */
+  .MuiListItem-root {
+    padding: 10px;
+  }
+  
+  /* Add some spacing between the notification list items */
+  .MuiList-padding {
+    padding: 0;
+  }
+  
+  /* Style the app name and navigation links */
+  .nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 10px;
+  }
+  
+  /* Style the active navigation link */
+  .nav-link.active {
+    background-color: #45658e;
+    border-radius: 5px;
+  }
+  
+  /* Style the profile dropdown items */
+  .dropdown-item {
+    color: #333;
+    font-size: 14px;
+  }
+  
+  /* Add some spacing between the profile dropdown items */
+  .dropdown-menu {
+    padding: 10px;
+  }
+  

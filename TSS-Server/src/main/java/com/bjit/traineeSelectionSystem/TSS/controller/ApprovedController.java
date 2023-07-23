@@ -1,10 +1,6 @@
 package com.bjit.traineeSelectionSystem.TSS.controller;
 
-import com.bjit.traineeSelectionSystem.TSS.entity.ApplicationEntity;
-import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
-import com.bjit.traineeSelectionSystem.TSS.service.ApplicationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

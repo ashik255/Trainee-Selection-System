@@ -1,8 +1,15 @@
-
-import React, { useState, useEffect } from 'react';
-import { Container, Paper, Card, CardContent, CardMedia, Typography, Button, Grid } from '@mui/material';
-import axios from 'axios';
-// import { G } from '@react-pdf/renderer';
+import React, { useState, useEffect } from "react";
+import {
+  Container,
+  Paper,
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Button,
+  Grid,
+} from "@mui/material";
+import axios from "axios";
 
 const ViewCircular = () => {
   const [data, setData] = useState([]);
@@ -10,10 +17,12 @@ const ViewCircular = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8081/admin/circular/getAllCircular');
+        const response = await axios.get(
+          "http://localhost:8081/admin/circular/getAllCircular"
+        );
         setData(response.data.data);
 
-        console.log('Fetched Data:', response.data.data);
+        console.log("Fetched Data:", response.data.data);
       } catch (error) {
         console.error(error);
         // Handle error here, e.g., show an error message to the user.
@@ -25,35 +34,35 @@ const ViewCircular = () => {
 
   return (
     <Container>
-<Paper elevation={3} style={{ padding: '20px' }}>
-      <Grid container spacing={3}>
-        {data.map((data) => (
+      <Paper elevation={3} style={{ padding: "20px" }}>
+        <Grid container spacing={3}>
+          {data.map((data) => (
             <Grid item xs={12} sm={6} md={4}>
-          <Card key={data.id}  style={{ marginBottom: '20px' }}>
-             <CardMedia
-               component="img"
-               height="200"
-               image={data.imgLink}
-              alt={data.title}
-            />
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                {data.title}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                {data.description}
-              </Typography>
-            </CardContent>
-            <Button variant="outlined" color="primary">
-              Learn More
-            </Button>
-          </Card>
+              <Card key={data.id} style={{ marginBottom: "20px" }}>
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={data.imgLink}
+                  alt={data.title}
+                />
+                <CardContent>
+                  <Typography variant="h5" component="h2">
+                    {data.title}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary">
+                    {data.description}
+                  </Typography>
+                </CardContent>
+                <Button variant="outlined" color="primary">
+                  Learn More
+                </Button>
+              </Card>
             </Grid>
-        ))}
+          ))}
         </Grid>
       </Paper>
-     </Container>
- );
+    </Container>
+  );
 };
 
 export default ViewCircular;

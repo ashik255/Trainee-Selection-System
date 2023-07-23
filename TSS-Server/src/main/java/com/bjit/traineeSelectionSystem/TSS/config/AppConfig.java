@@ -1,4 +1,4 @@
-//package com.bjit.traineeSelectionSystem.TSS.config;
+package com.bjit.traineeSelectionSystem.TSS.config;//package com.bjit.traineeSelectionSystem.TSS.config;
 //
 //import com.bjit.traineeSelectionSystem.TSS.repository.UserRepository;
 //import lombok.RequiredArgsConstructor;

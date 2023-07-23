@@ -18,6 +18,6 @@ public class ApprovedEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long approvedId;
 
-    @ManyToOne
-    private ApplicantEntity applicant;
-}
+    private Long circularId;
+    private Long applicantId;
+    private Boolean approvedMessage = false;}

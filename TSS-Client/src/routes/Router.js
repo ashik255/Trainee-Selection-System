@@ -1,15 +1,12 @@
 import { lazy } from "react";
 import { Navigate } from "react-router-dom";
 
-import LoginPage from "../pages/LoginPage.js";
+import LoginPage from "../pages/LoginPage.jsx";
 import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
 import QrCodeGenerator from "../components/QrCodeGenerator.jsx";
 import AdmitCard from "../components/AdmitCard.jsx";
 import SendEmail from "../components/SendEmail.jsx";
 import Home from "../views/ui/Home.jsx";
-// import CreateCircular from "../views/ui/CreateCreateCircular.jsx";
-import Notification from "../views/ui/Notification.jsx";
-// import UploadMarks from "../views/ui/UploadMarks.jsx";;
 import CreateCircular from "../views/ui/CreateCircular.jsx";
 import ViewCircular from "../views/ui/ViewCircular.jsx";
 import ApplicationTable from "../views/ui/ApplicationTable.jsx";
@@ -18,11 +15,11 @@ import UploadMarks from "../views/UploadMarks/UploadMarks.jsx";
 import NoticeBoards from "../views/ui/NoticeBoards.jsx";
 import FinalList from "../views/FinalList/FinalList.jsx";
 import AddEvaluator from "../views/AddEvaluator/AddEvaluator.jsx";
-// import NoticeBoard from "../views/UploadMarks/UploadMarks.jsx";
-// import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
+import Header from "../layouts/Header.jsx";
+
 
 /****Layouts*****/
-const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
+const FullLayout = lazy(() => import("../layouts/FullLayout.jsx"));
 
 // /***** Pages ****/
 
@@ -42,12 +39,13 @@ const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
 const ThemeRoutes = [
   {
     path: "/",
+    // element:<Header></Header>,
     // element: <LoginPage />,
     element: <FullLayout />,
     children: [
       // { path: "/", element: <Navigate to="/starter" /> },
       // { path: "/starter", exact: true, element: <Starter /> },
-      { path: "/home", exact: true, element: <Home /> },
+      { path: "/", exact: true, element: <Home /> },
       { path: "/login", exact: true, element: <LoginPage /> },
       { path: "/register", exact: true, element: <ApplicantRegistrationPage /> },
       // { path: "/qrcode", exact: true, element: <QrCodeGenerator /> },
@@ -102,10 +100,7 @@ const ThemeRoutes = [
     path: "/sendemail",
     element: <SendEmail />,
   },
-  // {
-  //   path: "/circular",
-  //   element: <ViewCircular />
-  // },
+
   {
     path: "/approvedtable",
     element: <ApprovedTable />

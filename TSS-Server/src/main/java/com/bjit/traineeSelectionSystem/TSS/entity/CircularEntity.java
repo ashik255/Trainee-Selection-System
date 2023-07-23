@@ -6,7 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Circular")
@@ -23,4 +25,6 @@ public class CircularEntity {
     private String description;
     private Date startDate;
     private Date endDate;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<ApplicantEntity> applicants = new ArrayList<>();
 }
