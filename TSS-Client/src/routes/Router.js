@@ -6,7 +6,7 @@ import ApplicantRegistrationPage from "../pages/ApplicantRegistrationPage.jsx";
 import QrCodeGenerator from "../components/QrCodeGenerator.jsx";
 import AdmitCard from "../components/AdmitCard.jsx";
 import SendEmail from "../components/SendEmail.jsx";
-import Home from "../views/ui/Home.jsx";
+// import Home from "../views/ui/Home.jsx";
 import CreateCircular from "../views/ui/CreateCircular.jsx";
 import ViewCircular from "../views/ui/ViewCircular.jsx";
 import ApplicationTable from "../views/ui/ApplicationTable.jsx";
@@ -16,6 +16,10 @@ import NoticeBoards from "../views/ui/NoticeBoards.jsx";
 import FinalList from "../views/FinalList/FinalList.jsx";
 import AddEvaluator from "../views/AddEvaluator/AddEvaluator.jsx";
 import Header from "../layouts/Header.jsx";
+import CarouselComponent from "../components/carousel/CarouselComponent.jsx";
+import Blog from "../components/Blog/Blog.jsx";
+import Home from "../pages/Home.jsx";
+import CircularDetails from "../views/DetailsCircular/CircularDetails.jsx";
 
 
 /****Layouts*****/
@@ -45,7 +49,7 @@ const ThemeRoutes = [
     children: [
       // { path: "/", element: <Navigate to="/starter" /> },
       // { path: "/starter", exact: true, element: <Starter /> },
-      { path: "/", exact: true, element: <Home /> },
+      // { path: "/", exact: true, element: <Home /> },
       { path: "/login", exact: true, element: <LoginPage /> },
       { path: "/register", exact: true, element: <ApplicantRegistrationPage /> },
       // { path: "/qrcode", exact: true, element: <QrCodeGenerator /> },
@@ -105,6 +109,22 @@ const ThemeRoutes = [
     path: "/approvedtable",
     element: <ApprovedTable />
   },
+  {
+    path: "/carosel",
+    element: <CarouselComponent/>
+  },
+  {
+    path: "/blog",
+    element: <Blog/>
+  },
+  {
+    path: "/home",
+    element: <Home/>
+  },
+  {
+    path: "/circulardetails",
+    element: <CircularDetails />
+  }
 
 ];
 

@@ -58,7 +58,7 @@ const Header = () => {
     <Navbar style={{ backgroundColor: "#5584AC" }} expand="md">
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
-          <img  style={{width:'70px', height:'50px'}} className="rounded w-10" src={pic} alt="" />
+          <img style={{ width: '70px', height: '50px' }} className="rounded w-10" src={pic} alt="" />
         </NavbarBrand>
         <Button
           color="primary"
@@ -83,20 +83,24 @@ const Header = () => {
         </Button>
       </div>
       <Collapse navbar isOpen={isOpen}>
-            <Link to="/" className="nav-lin" navbar>
-            <img  style={{width:'50px', height:'50px'}} className="rounde" src={pic} alt="" />
-            </Link>
-        <Nav className="mx-auto " navbar>
-        
+        <Link to="/" className="nav-lin" navbar>
+          <img style={{ width: '50px', height: '50px' }} className="rounde" src={pic} alt="" />
+        </Link>
+        <Nav className="mx-auto text-white " navbar>
+
           {/* <div className="ml-"> */}
           <NavItem>
-            <Link to="/" className="nav-link">
-              <h5 className="text-center border">Home</h5>
+            <Link to="/home" className="nav-link">
+              <h5 className="text-center ">Home</h5>
             </Link>
           </NavItem>
+
+          <Link to="/dashboard" className="nav-link">
+            <h5>DashBoard</h5>
+          </Link>
           <NavItem className="m">
             <Link to="/login" className="nav-link">
-              Login
+              <h5>Login</h5>
             </Link>
           </NavItem>
           {/* </div> */}

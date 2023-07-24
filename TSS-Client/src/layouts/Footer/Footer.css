@@ -1,8 +1,8 @@
 /* Footer.css */
 
 .footer {
-    background-color: #5584AC;
-    color: #fff;
+    background-color: #2286d8;
+    color: #990a0a;
     padding: 30px 0;
   }
   
@@ -23,7 +23,7 @@
   }
   
   .footer-links a {
-    color: #fff;
+    color: #0f0e0e;
     text-decoration: none;
   }
   
@@ -42,8 +42,9 @@
   }
   
   .social-icon {
-    font-size: 24px;
-    margin: 0 5px;
+    font-size: 42px;
+    margin: 5px 5px;
+    padding: 10px;
     color: #fff;
   }
   

@@ -54,7 +54,7 @@ const ViewCircular = () => {
                   </Typography>
                 </CardContent>
                 <Button variant="outlined" color="primary">
-                  Learn More
+                  View Course
                 </Button>
               </Card>
             </Grid>
