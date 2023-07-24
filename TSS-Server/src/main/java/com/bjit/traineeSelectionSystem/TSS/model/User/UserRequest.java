@@ -20,7 +20,7 @@ public class UserRequest {
     private String email;
     @NotEmpty(message = "Password is required")
     private String password;
-    @NotEmpty(message = "Role is required")
+//    @NotEmpty(message = "Role is required")
     private String roles;
 
 }

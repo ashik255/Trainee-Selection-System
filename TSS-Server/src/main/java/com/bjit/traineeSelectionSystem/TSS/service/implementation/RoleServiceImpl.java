@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleEntity addRole(String roleName) {
         if (roleRepository.findByRoleName(roleName).isEmpty()) {
             RoleEntity role = new RoleEntity();
-            role.setRoleName(roleName);
+            role.setRoleName(roleName.toUpperCase());
             return roleRepository.save(role);
         }
         return null;

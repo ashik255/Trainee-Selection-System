@@ -1,6 +1,7 @@
 package com.bjit.traineeSelectionSystem.TSS.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,10 +22,15 @@ public class CircularEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long circularId;
     private String title;
+    @Size(max = 1000)
+    private java.lang.String about;
+    @Size(max = 1000)
+    private java.lang.String requirement;
     private String imgLink;
-    private String description;
+    @Size(max = 1000)
+    private java.lang.String description;
     private Date startDate;
     private Date endDate;
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<ApplicantEntity> applicants = new ArrayList<>();
 }

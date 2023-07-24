@@ -11,6 +11,7 @@ import com.bjit.traineeSelectionSystem.TSS.repository.ApplicantRepository;
 import com.bjit.traineeSelectionSystem.TSS.repository.RoleRepository;
 import com.bjit.traineeSelectionSystem.TSS.repository.UserRepository;
 import com.bjit.traineeSelectionSystem.TSS.service.ApplicantService;
+import com.bjit.traineeSelectionSystem.TSS.service.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class ApplicantServiceImp implements ApplicantService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleService roleService;
 
     @Override
     public ResponseEntity<ResponseModel<?>> createApplicant(ApplicantRequest applicantRequest) {
@@ -39,7 +41,11 @@ public class ApplicantServiceImp implements ApplicantService {
         if (roleName == null) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        RoleEntity role = roleRepository.findByRoleName(roleName).orElse(null);
+
+        if( roleRepository.findByRoleName(roleName).isEmpty() ){
+            roleService.addRole(roleName);
+        }
+        RoleEntity role = roleRepository.findByRoleName(roleName).get();
 //        RoleEntity role = roleRepository.findByRoleName(applicantRequest.getRole()).get();
         UserEntity user  = UserEntity.builder()
                 .email(applicantRequest.getEmail())
@@ -93,7 +99,7 @@ public class ApplicantServiceImp implements ApplicantService {
         applicant.setPhoto(applicantEntity.getPhoto());
         applicant.setCv(applicantEntity.getCv());
 
-        ApplicantEntity saveData = applicantRepository.save(applicantEntity);
+        ApplicantEntity saveData = applicantRepository.save(applicant);
 
         ResponseModel<ApplicantEntity> response = new ResponseModel<>();
 
@@ -104,30 +110,9 @@ public class ApplicantServiceImp implements ApplicantService {
 
     @Override
     public ResponseEntity<ResponseModel<?>> getAllApplicant() {
-        List<ApplicantEntity> circular = applicantRepository.findAll();
-//        if (circular.isEmpty()) {
-//            throw new BookServiceException("There is no book available in the stock");
-//        }
-        List<ApplicantEntity> applicantResponse = new ArrayList<>();
-        circular.forEach(applicantEntity -> applicantResponse.add(
-                ApplicantEntity.builder()
-                        .user(applicantEntity.getUser())
-                        .address(applicantEntity.getAddress())
-                        .cgpa(applicantEntity.getCgpa())
-                        .contact(applicantEntity.getContact())
-                        .dateOfBirth(applicantEntity.getDateOfBirth())
-                        .degreeName(applicantEntity.getDegreeName())
-                        .firstName(applicantEntity.getFirstName())
-                        .lastName(applicantEntity.getLastName())
-                        .gender(applicantEntity.getGender())
-                        .institute(applicantEntity.getInstitute())
-                        .passingYear(applicantEntity.getPassingYear())
-                        .photo(applicantEntity.getPhoto())
-                        .cv(applicantEntity.getCv())
-                        .build()
-        ));
+        List<ApplicantEntity> applicants = applicantRepository.findAll();
         ResponseModel Response = ResponseModel.builder()
-                .data(applicantResponse)
+                .data(applicants)
                 .build();
         // Return the ResponseEntity with the APIResponse
         return ResponseEntity.ok(Response);

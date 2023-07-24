@@ -26,6 +26,8 @@ public class CircularServiceImp implements CircularService {
         CircularEntity circularEntity = CircularEntity.builder()
                 .title(circularRequest.getTitle())
                 .imgLink(circularRequest.getImgLink())
+                .about(circularRequest.getAbout())
+                .requirement(circularRequest.getRequirement())
                 .description(circularRequest.getDescription())
                 .startDate(circularRequest.getStartDate())
                 .endDate(circularRequest.getEndDate())
@@ -45,6 +47,8 @@ public class CircularServiceImp implements CircularService {
         // Update the fields of existingCircular with the values from circular
         circularEntity.setTitle(circularRequest.getTitle());
         circularEntity.setImgLink(circularRequest.getImgLink());
+        circularEntity.setAbout(circularRequest.getImgLink());
+        circularEntity.setRequirement(circularRequest.getRequirement());
         circularEntity.setDescription(circularRequest.getDescription());
         circularEntity.setStartDate(circularRequest.getStartDate());
         circularEntity.setEndDate(circularRequest.getEndDate());
@@ -59,23 +63,23 @@ public class CircularServiceImp implements CircularService {
 
     @Override
     public ResponseEntity<ResponseModel<?>> getAllCircular() {
-        List<CircularEntity> circular = circularRepository.findAll();
+        List<CircularEntity> circulars = circularRepository.findAll();
 //        if (circular.isEmpty()) {
 //            throw new BookServiceException("There is no book available in the stock");
 //        }
-        List<CircularEntity> circularResponses = new ArrayList<>();
-        circular.forEach(circularEntity -> circularResponses.add(
-                CircularEntity.builder()
-                        .circularId(circularEntity.getCircularId())
-                        .imgLink(circularEntity.getImgLink())
-                        .description(circularEntity.getDescription())
-                        .title(circularEntity.getDescription())
-                        .startDate(circularEntity.getStartDate())
-                        .endDate(circularEntity.getEndDate())
-                        .build()
-        ));
+//        List<CircularEntity> circularResponses = new ArrayList<>();
+//        circular.forEach(circularEntity -> circularResponses.add(
+//                CircularEntity.builder()
+//                        .circularId(circularEntity.getCircularId())
+//                        .imgLink(circularEntity.getImgLink())
+//                        .description(circularEntity.getDescription())
+//                        .title(circularEntity.getDescription())
+//                        .startDate(circularEntity.getStartDate())
+//                        .endDate(circularEntity.getEndDate())
+//                        .build()
+//        ));
         ResponseModel Response = ResponseModel.builder()
-                .data(circularResponses)
+                .data(circulars)
                 .build();
 
         // Return the ResponseEntity with the APIResponse
@@ -122,32 +126,14 @@ public class CircularServiceImp implements CircularService {
         List<CircularEntity> circulars = circularRepository.findAll();
         for( CircularEntity thisCircular : circulars ){
             List<ApplicantEntity> applicants = thisCircular.getApplicants();
-            System.out.println("The size is : " + applicants.size());
             if( applicants.contains(thisapplicant) ){
                 selectedcirculars.add(thisCircular);
             }
         }
-        System.out.println("The final result is : " + selectedcirculars.size());
         ResponseModel response = ResponseModel.builder()
                 .data(selectedcirculars)
                 .build();
         return ResponseEntity.ok(response);
     }
-
-//    @Override
-//    public ResponseEntity<List<CircularEntity>> findApplicant(Long applicantId) {
-//
-//        ApplicantEntity thisapplicant = applicantRepo.findById(applicantId).get();
-//        List<CircularEntity> selectedcirculars = new ArrayList<>();
-//
-//        List<CircularEntity> circulars = circularRepository.findAll();
-//        for( CircularEntity thisCircular : circulars ){
-//            List<ApplicantEntity> applicants = thisCircular.getApplicants();
-//            if( applicants.contains(thisapplicant) ){
-//                selectedcirculars.add(thisCircular);
-//            }
-//        }
-//        return ResponseEntity.ok(selectedcirculars);
-//    }
 
 }

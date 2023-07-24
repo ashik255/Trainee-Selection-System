@@ -23,7 +23,7 @@ public class ApplicantController {
         return applicantService.createApplicant(applicantRequest);
     }
 
-    @PutMapping("/update/applicantId")
+    @PutMapping("/update/{applicantId}")
     public ResponseEntity<ResponseModel<?>> updateApplication(@RequestParam Long applicantId , @RequestBody ApplicantEntity applicantEntity) {
         return applicantService.updateApplication(applicantId , applicantEntity);
     }

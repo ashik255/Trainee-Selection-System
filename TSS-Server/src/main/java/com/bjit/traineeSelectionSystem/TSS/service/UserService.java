@@ -9,4 +9,5 @@ public interface UserService {
     ResponseEntity<ResponseModel> register(UserRequest userRequest);
 
     ResponseEntity<ResponseModel> login(LoginRequest loginRequest);
+
 }

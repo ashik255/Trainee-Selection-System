@@ -11,9 +11,8 @@ public class Application {
 
 	public static void main(String[] args) {
 
-		System.out.println("hii");
 		SpringApplication.run(Application.class, args);
-
+		System.out.println("---------------------------------------------");
 	}
 //	@Bean
 //	CommandLineRunner run(RoleService roleService){
