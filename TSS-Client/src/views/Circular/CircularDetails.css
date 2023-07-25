@@ -1,0 +1,58 @@
+
+
+.user-registration-form {
+    margin: 20px;
+  }
+  
+  h1 {
+    margin-bottom: 15px;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 20px;
+  }
+  
+  h2 {
+    margin-top: 30px;
+  }
+  
+  .details-card {
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .icon-container {
+    background-color: #f1f1f1;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .details-icon {
+    font-size: 24px;
+  }
+  
+  .apply-btn {
+    margin-top: 20px;
+  }
+  
+  .success-message {
+    margin-top: 20px;
+    color: green;
+  }
+  
+  .data-view {
+    margin-top: 20px;
+  }
+  
+  .data-view h2 {
+    margin-top: 30px;
+  }
+  

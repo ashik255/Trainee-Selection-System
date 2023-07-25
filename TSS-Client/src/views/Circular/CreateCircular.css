@@ -1,0 +1,32 @@
+/* CreateCircular.css */
+
+.paper-container {
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .input-field {
+    margin-bottom: 15px;
+  }
+  
+  .textarea {
+    resize: none;
+  }
+  
+  .date-pickers {
+    margin-bottom: 15px;
+  }
+  
+  .submit-button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .success-message {
+    color: green;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 16px;
+  }
+  
