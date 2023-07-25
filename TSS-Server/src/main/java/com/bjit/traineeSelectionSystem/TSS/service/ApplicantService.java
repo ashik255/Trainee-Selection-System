@@ -4,9 +4,12 @@ import com.bjit.traineeSelectionSystem.TSS.entity.ApplicantEntity;
 import com.bjit.traineeSelectionSystem.TSS.model.ApplicantRequest;
 import com.bjit.traineeSelectionSystem.TSS.model.ResponseModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 public interface ApplicantService {
-    ResponseEntity<ResponseModel<?>> createApplicant(ApplicantRequest applicantRequest);
+    ResponseEntity<ResponseModel<?>> createApplicant(MultipartFile image , MultipartFile cv , ApplicantRequest applicantRequest) throws IOException;
 
     ResponseEntity<ResponseModel<?>> updateApplication(Long applicantId, ApplicantEntity applicantEntity);
 

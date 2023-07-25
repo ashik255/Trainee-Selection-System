@@ -13,12 +13,20 @@ import com.bjit.traineeSelectionSystem.TSS.repository.UserRepository;
 import com.bjit.traineeSelectionSystem.TSS.service.ApplicantService;
 import com.bjit.traineeSelectionSystem.TSS.service.RoleService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.management.relation.Role;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +43,10 @@ public class ApplicantServiceImp implements ApplicantService {
     private final RoleService roleService;
 
     @Override
-    public ResponseEntity<ResponseModel<?>> createApplicant(ApplicantRequest applicantRequest) {
+    public ResponseEntity<ResponseModel<?>> createApplicant(MultipartFile image , MultipartFile cv , ApplicantRequest applicantRequest) throws IOException {
+
+        final String PHOTO_UPLOAD_URL = new ClassPathResource("static/profile/").getFile().getAbsolutePath();
+        final String CV_UPLOAD_URL = new ClassPathResource("static/cv/").getFile().getAbsolutePath();
 
         String roleName = applicantRequest.getRole();
         if (roleName == null) {
@@ -46,13 +57,21 @@ public class ApplicantServiceImp implements ApplicantService {
             roleService.addRole(roleName);
         }
         RoleEntity role = roleRepository.findByRoleName(roleName).get();
-//        RoleEntity role = roleRepository.findByRoleName(applicantRequest.getRole()).get();
         UserEntity user  = UserEntity.builder()
                 .email(applicantRequest.getEmail())
                 .password(passwordEncoder.encode(applicantRequest.getPassword()))
                 .role(role)
                 .build();
         UserEntity savedUser = userRepository.save(user);
+
+
+        Files.copy( image.getInputStream() , Paths.get(PHOTO_UPLOAD_URL + File.separator + image.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+        String linkPhoto = ServletUriComponentsBuilder.fromCurrentContextPath().path("/profile/" + image.getOriginalFilename()).toUriString();
+
+
+        Files.copy( image.getInputStream() , Paths.get(CV_UPLOAD_URL + File.separator + cv.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+        String linkCv = ServletUriComponentsBuilder.fromCurrentContextPath().path("/cv/" + cv.getOriginalFilename()).toUriString();
+
         ApplicantEntity applicant = ApplicantEntity.builder()
                 .user(savedUser)
                 .address(applicantRequest.getAddress())
@@ -65,8 +84,8 @@ public class ApplicantServiceImp implements ApplicantService {
                 .gender(applicantRequest.getGender())
                 .institute(applicantRequest.getInstitute())
                 .passingYear(applicantRequest.getPassingYear())
-                .photo(applicantRequest.getPhoto())
-                .cv(applicantRequest.getCv())
+                .photo(linkPhoto)
+                .cv(linkCv)
                 .build();
         ApplicantEntity saveData = applicantRepository.save(applicant);
 

@@ -9,7 +9,9 @@ import com.bjit.traineeSelectionSystem.TSS.service.CircularService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,8 +21,8 @@ public class ApplicantController {
     private final ApplicantService applicantService;
     private final CircularService circularService;
     @PostMapping("/register")
-    public ResponseEntity<ResponseModel<?>> createApplicant(@RequestBody ApplicantRequest applicantRequest){
-        return applicantService.createApplicant(applicantRequest);
+    public ResponseEntity<ResponseModel<?>> createApplicant(@RequestParam("profile") MultipartFile image , @RequestParam("cv") MultipartFile cv , @ModelAttribute ApplicantRequest applicantRequest) throws IOException {
+        return applicantService.createApplicant(image , cv , applicantRequest);
     }
 
     @PutMapping("/update/{applicantId}")
