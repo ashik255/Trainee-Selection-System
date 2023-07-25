@@ -7,7 +7,7 @@ import QrCodeGenerator from "../components/QrCodeGenerator.jsx";
 import AdmitCard from "../components/AdmitCard.jsx";
 import SendEmail from "../components/SendEmail.jsx";
 // import Home from "../views/ui/Home.jsx";
-import CreateCircular from "../views/ui/CreateCircular.jsx";
+// import CreateCircular from "../views/ui/CreateCircular.jsx";
 import ViewCircular from "../views/ui/ViewCircular.jsx";
 import ApplicationTable from "../views/ui/ApplicationTable.jsx";
 import ApprovedTable from "../views/ui/ApprovedTable.jsx";
@@ -19,7 +19,10 @@ import Header from "../layouts/Header.jsx";
 import CarouselComponent from "../components/carousel/CarouselComponent.jsx";
 import Blog from "../components/Blog/Blog.jsx";
 import Home from "../pages/Home.jsx";
-import CircularDetails from "../views/DetailsCircular/CircularDetails.jsx";
+// import CircularDetails from "../views/DetailsCircular/CircularDetails.jsx";
+import CreateCircular from "../views/Circular/CreateCircular.jsx";
+import CircularDetails from "../views/Circular/CircularDetails.jsx";
+// import CreateCircular from "../views/Circular/CreateCircular.jsx";
 
 
 /****Layouts*****/
