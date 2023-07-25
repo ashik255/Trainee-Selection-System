@@ -1,17 +1,33 @@
-import React, { useState } from 'react';
-import { Form, Button, Card } from 'react-bootstrap';
-import './style.css'; // Import the custom CSS file
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faUser } from '@fortawesome/pro-duotone-svg-icons';
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Card, Container, Paper, Typography, TextField, Grid } from '@mui/material';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 const AddEvaluator = () => {
   const [userDetails, setUserDetails] = useState({
+    name: '',
     email: '',
     password: '',
     roles: '',
+    title: '',
   });
+
+  const [successMessage, setSuccessMessage] = useState('');
+  const [registeredEmail, setRegisteredEmail] = useState('');
+  const [showForm, setShowForm] = useState(false);
+  const [evaluators, setEvaluators] = useState([]);
+
+  useEffect(() => {
+    // Fetch all evaluators when the component mounts
+    axios.get('http://localhost:8081/admin/evaluator/getAll')
+      .then((response) => {
+        setEvaluators(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching evaluators:', error);
+      });
+  }, []);
+  console.log(evaluators);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,21 +37,15 @@ const AddEvaluator = () => {
     }));
   };
 
-  const [successMessage, setSuccessMessage] = useState('');
-  const [registeredEmail, setRegisteredEmail] = useState('');
-  const [showForm, setShowForm] = useState(false); // State to toggle form visibility
-  const [submittedData, setSubmittedData] = useState(null); // State to store submitted data
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Replace 'http://localhost:8082/applicant/getAllApplicant' with your API endpoint
-    axios.post('http://localhost:8082/applicant/getAllApplicant', userDetails)
+    // Post data to 'http://localhost:8081/admin/evaluator/register'
+    axios.post('http://localhost:8081/admin/evaluator/register', userDetails)
       .then((response) => {
-        console.log('Server response:', response.data);
-        setSubmittedData(response.data); // Store the server response in the state
         setSuccessMessage('Registration successful');
         setRegisteredEmail(userDetails.email);
         setShowForm(false); // Hide the form after submission
+
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -44,88 +54,105 @@ const AddEvaluator = () => {
   };
 
   return (
-    <div className="user-registration-form">
-      {showForm ? (
-        <>
-          <h2>Add Evaluator</h2>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
+    <Container maxWidth="sm">
+      <Paper elevation={3} style={{ padding: '20px', borderRadius: '10px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+        {showForm ? (
+          <>
+            <Typography variant="h4">Add Evaluator</Typography>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    name="name"
+                    label="Name"
+                    value={userDetails.name}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    name="title"
+                    label="Title"
+                    value={userDetails.title}
+                    onChange={handleChange}
+                    fullWidth
+                    required
+                  />
+                </Grid>
+              </Grid>
+              <TextField
                 name="email"
+                label="Email"
+                type="email"
                 value={userDetails.email}
                 onChange={handleChange}
-                placeholder="Enter your email"
+                fullWidth
                 required
               />
-            </Form.Group>
-
-            <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
+              <TextField
                 name="password"
+                label="Password"
+                type="password"
                 value={userDetails.password}
                 onChange={handleChange}
-                placeholder="Enter your password"
+                fullWidth
                 required
               />
-            </Form.Group>
-
-            <Form.Group controlId="roles">
-              <Form.Label>Role</Form.Label>
-              <Form.Control
-                as="select"
+              <TextField
                 name="roles"
+                label="Role"
+                select
                 value={userDetails.roles}
                 onChange={handleChange}
+                fullWidth
                 required
               >
-                <option value="">Select a role</option>
+
                 <option value="Evaluator">Evaluator</option>
                 {/* Add other role options here */}
-              </Form.Control>
-            </Form.Group>
+              </TextField>
+              <Button type="submit" variant="contained" color="primary" style={{ marginTop: '20px' }}>
+                Register
+              </Button>
+            </form>
+            {successMessage && (
+              <Typography variant="subtitle1" style={{ color: 'green', marginTop: '20px', textAlign: 'center' }}>
+                {successMessage}
+                <br />
+                Email: {registeredEmail}
+              </Typography>
+            )}
+          </>
+        ) : (
+          <Button onClick={() => setShowForm(true)} variant="contained" color="primary">
+            Add Evaluator
+          </Button>
+        )}
+      </Paper>
 
-            <Button className="mt-2 p-2" variant="primary" type="submit">
-              Register
-            </Button>
-          </Form>
-          {successMessage && (
-            <div className="success-message">
-              Registration successful: {successMessage}
-              <hr />
-              Email: {registeredEmail}
-            </div>
-          )}
-        </>
-      ) : (
-        <Button onClick={() => setShowForm(true)}>
-          Add Evaluator 
-        </Button>
-      )}
-
-      {/* Data view section */}
-      {submittedData && (
-        <div className="data-view">
-          <h2>Submitted Data</h2>
-          {submittedData.map((dataItem) => (
-            <Card key={dataItem.id} className="mb-3">
-              <Card.Body>
-                <Card.Title>{dataItem.name}</Card.Title>
-                <Card.Text>{dataItem.email}</Card.Text>
-                <Card.Text>{dataItem.roles}</Card.Text>
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
-      )}
+      {/* Data view section  */}
+      {evaluators.length > 0 && (
+          <div className="data-view mt-3">
+            <Typography variant="h5">Evaluators List</Typography>
+            {evaluators.map((evaluator) => (
+              <Card key={evaluator.id} className="mb-3">
+                <Card.Body>
+                  <Typography variant="subtitle1">Name: {evaluator.data.name}</Typography>
+                  <Typography variant="body1">Email: {evaluator.data.email}</Typography>
+                  <Typography variant="body1">Role: {evaluator.data.roles}</Typography>
+                  <Typography variant="body1">Title: {evaluator.data.title}</Typography>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+        )}
 
       <div className="login-link mt-3">
         Already have an account? <Link to="/login">Login</Link>
       </div>
-    </div>
+    </Container>
   );
 };
 

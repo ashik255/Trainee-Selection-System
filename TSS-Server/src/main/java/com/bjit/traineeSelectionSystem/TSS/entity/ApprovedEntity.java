@@ -20,4 +20,4 @@ public class ApprovedEntity {
 
     private Long circularId;
     private Long applicantId;
-    private Boolean approvedMessage = false;}
+}
