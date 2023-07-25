@@ -14,14 +14,5 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 		System.out.println("---------------------------------------------");
 	}
-//	@Bean
-//	CommandLineRunner run(RoleService roleService){
-//		return args -> {
-//
-//			roleService.addRole("EVALUATOR");
-//			roleService.addRole("TRAINER");
-//			roleService.addRole("ADMIN");
-//
-//		};
 
 }

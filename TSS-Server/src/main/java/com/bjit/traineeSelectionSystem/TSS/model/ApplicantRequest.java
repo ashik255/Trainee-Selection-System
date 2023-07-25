@@ -25,7 +25,5 @@ public class ApplicantRequest {
     private Double cgpa;
     private Long passingYear;
     private String address;
-    private String role;
-    private String photo; // Assuming the photo is stored as a file path or URL
-    private String cv; // Assuming the CV is stored as a file path or URL
+    private String role;// Assuming the CV is stored as a file path or URL
 }

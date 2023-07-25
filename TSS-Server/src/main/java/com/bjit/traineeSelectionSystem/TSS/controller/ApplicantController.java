@@ -21,7 +21,7 @@ public class ApplicantController {
     private final ApplicantService applicantService;
     private final CircularService circularService;
     @PostMapping("/register")
-    public ResponseEntity<ResponseModel<?>> createApplicant(@RequestParam("profile") MultipartFile image , @RequestParam("cv") MultipartFile cv , @ModelAttribute ApplicantRequest applicantRequest) throws IOException {
+    public ResponseEntity<ResponseModel<?>> createApplicant(@RequestParam("photo") MultipartFile image , @RequestParam("cv") MultipartFile cv , @ModelAttribute ApplicantRequest applicantRequest) throws IOException {
         return applicantService.createApplicant(image , cv , applicantRequest);
     }
 

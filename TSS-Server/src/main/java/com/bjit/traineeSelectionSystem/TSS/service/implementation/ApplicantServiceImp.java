@@ -25,6 +25,7 @@ import javax.management.relation.Role;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
@@ -45,8 +46,10 @@ public class ApplicantServiceImp implements ApplicantService {
     @Override
     public ResponseEntity<ResponseModel<?>> createApplicant(MultipartFile image , MultipartFile cv , ApplicantRequest applicantRequest) throws IOException {
 
-        final String PHOTO_UPLOAD_URL = new ClassPathResource("static/profile/").getFile().getAbsolutePath();
-        final String CV_UPLOAD_URL = new ClassPathResource("static/cv/").getFile().getAbsolutePath();
+//        final String PHOTO_UPLOAD_URL = new ClassPathResource("/static/photo/").getFile().getAbsolutePath();
+//        final String CV_UPLOAD_URL = new ClassPathResource("static/cv/").getFile().getAbsolutePath();
+        final String CV_UPLOAD_URL = "F:\\Final_Project\\TSS-Server\\src\\main\\resources\\static\\cv";
+        final String PHOTO_UPLOAD_URL = "F:\\Final_Project\\TSS-Server\\src\\main\\resources\\static\\photo";
 
         String roleName = applicantRequest.getRole();
         if (roleName == null) {
@@ -65,12 +68,30 @@ public class ApplicantServiceImp implements ApplicantService {
         UserEntity savedUser = userRepository.save(user);
 
 
-        Files.copy( image.getInputStream() , Paths.get(PHOTO_UPLOAD_URL + File.separator + image.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
-        String linkPhoto = ServletUriComponentsBuilder.fromCurrentContextPath().path("/profile/" + image.getOriginalFilename()).toUriString();
+        // Copy CV file
+        Path cvPath = Paths.get(CV_UPLOAD_URL + File.separator + cv.getOriginalFilename());
+        Files.copy(cv.getInputStream(), cvPath, StandardCopyOption.REPLACE_EXISTING);
 
+        // Generate link to access the CV
+        String linkCv = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/cv/" + cv.getOriginalFilename())
+                .toUriString();
 
-        Files.copy( image.getInputStream() , Paths.get(CV_UPLOAD_URL + File.separator + cv.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
-        String linkCv = ServletUriComponentsBuilder.fromCurrentContextPath().path("/cv/" + cv.getOriginalFilename()).toUriString();
+        // Copy image file
+        Path imagePath = Paths.get(PHOTO_UPLOAD_URL + File.separator + image.getOriginalFilename());
+        Files.copy(image.getInputStream(), imagePath, StandardCopyOption.REPLACE_EXISTING);
+
+        // Generate link to access the image
+        String linkPhoto = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/photo/" + image.getOriginalFilename())
+                .toUriString();
+//        Files.copy( image.getInputStream() , Paths.get(PHOTO_UPLOAD_URL + File.separator + image.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+//        String linkPhoto = ServletUriComponentsBuilder.fromCurrentContextPath().path("/image/" + image.getOriginalFilename()).toUriString();
+//
+//
+//        Files.copy( image.getInputStream() , Paths.get(CV_UPLOAD_URL + File.separator + cv.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+////        String linkCv = ServletUriComponentsBuilder.fromCurrentContextPath().path("/cv/" + cv.getOriginalFilename()).toUriString();
+//        String linkCv = CV_UPLOAD_URL + File.separator + cv.getOriginalFilename();
 
         ApplicantEntity applicant = ApplicantEntity.builder()
                 .user(savedUser)
