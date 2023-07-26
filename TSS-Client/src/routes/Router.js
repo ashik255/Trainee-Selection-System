@@ -68,6 +68,10 @@ const ThemeRoutes = [
         path:"/test",
         element:<Test/>
       },
+      {
+        path: "/sendemail",
+        element: <SendEmail />,
+      },
 
       // { path: "/about", exact: true, element: <About /> },
       // { path: "/alerts", exact: true, element: <Alerts /> },
@@ -95,10 +99,7 @@ const ThemeRoutes = [
     path: "/admitcard",
     element: <AdmitCard />,
   },
-  {
-    path: "/sendemail",
-    element: <SendEmail />,
-  },
+  
 
   {
     path: "/approvedtable",
