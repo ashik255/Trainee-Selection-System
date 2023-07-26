@@ -20,6 +20,7 @@ public class CircularRequest {
     @NotBlank
     private String title;
     @NotBlank
+    @Size(max = 1000)
     private String imgLink;
 
     @NotBlank

@@ -35,7 +35,6 @@ public class ApplicationConfig {
                 }
                 UserEntity accountEntity = user.get();
                 List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-//                return List.of(new SimpleGrantedAuthority(role.name()));
                 authorities.add(new SimpleGrantedAuthority(accountEntity.getRole().getRoleName()));
                 return new User(
                         accountEntity.getEmail(), accountEntity.getPassword(), authorities

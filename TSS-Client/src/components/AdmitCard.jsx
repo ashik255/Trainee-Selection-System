@@ -28,7 +28,7 @@ const AdmitCard = () => {
   return (
     <div>
     <Container className="p-4 pdf-container" ref={containerRef}>
-      <div className="text-center  style={{backgroundColor:'#FAFFAF'}}">
+      <div className="text-center">
         <h4>Youth Skill Development Training, Bjit Academy</h4>
         <p>Address: House-1, Road-2E Baridhara J Block, Dhaka 1212</p>
       </div>
@@ -37,15 +37,11 @@ const AdmitCard = () => {
         <h5 className="mb-4 text-center">WRITTEN EXAMINATION</h5>
         <Col>
           <p>ROLL: 3300116</p>
-          <p>CLASS: THREE (3)</p>
-          <p>SHIFT: FEEDER</p>
-          <p>APPLICANT'S NAME: SALWA JAWAD SALFEE</p>
-          <p>FATHER'S NAME: MD. JAHANGIR HOSSAIN</p>
-          <p>MOTHER'S NAME: SALIMA SULTANA</p>
-          <p>EXAM CENTER: MOHAMMADPUR GOVT HIGH SCHOOL, DHAKA</p>
-          <p>EXAM DATE: 17/12/2015</p>
+          <p>SHIFT: Morning</p>
+          <p>APPLICANT'S NAME: Md. Ariful Islam</p>
+          <p>EXAM CENTER: BJIT Academy, Baridhara J Block, Dhaka 1212</p>
+          <p>EXAM DATE: 05/06/2023</p>
           <p>EXAM DURATION: 10AM TO 11AM</p>
-          <p>USERNAME (UASL): john_doe123</p>
         </Col>
         <Col className="text-center">
           <p>USER ID: 222DC7DH</p>

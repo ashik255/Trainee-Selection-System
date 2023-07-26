@@ -14,34 +14,21 @@ import ApprovedTable from "../views/ui/ApprovedTable.jsx";
 import UploadMarks from "../views/UploadMarks/UploadMarks.jsx";
 import NoticeBoards from "../views/ui/NoticeBoards.jsx";
 import FinalList from "../views/FinalList/FinalList.jsx";
-import AddEvaluator from "../views/AddEvaluator/AddEvaluator.jsx";
-import Header from "../layouts/Header.jsx";
+import AddEvaluator from "../views/Evaluator/AddEvaluator.jsx";
 import CarouselComponent from "../components/carousel/CarouselComponent.jsx";
 import Blog from "../components/Blog/Blog.jsx";
 import Home from "../pages/Home.jsx";
 // import CircularDetails from "../views/DetailsCircular/CircularDetails.jsx";
 import CreateCircular from "../views/Circular/CreateCircular.jsx";
 import CircularDetails from "../views/Circular/CircularDetails.jsx";
+import ViewEvaluator from "../views/Evaluator/ViewEvaluator.jsx";
+import Test from "../components/Test.jsx";
 // import CreateCircular from "../views/Circular/CreateCircular.jsx";
 
 
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.jsx"));
 
-// /***** Pages ****/
-
-// const Starter = lazy(() => import("../views/Starter.js"));
-// const About = lazy(() => import("../views/About.js"));
-// const Alerts = lazy(() => import("../views/ui/Alerts"));
-// const Badges = lazy(() => import("../views/ui/Badges"));
-// const Buttons = lazy(() => import("../views/ui/Buttons"));
-// // const Cards = lazy(() => import("../views/ui/Cards"));
-// // const Grid = lazy(() => import("../views/ui/Grid"));
-// const Tables = lazy(() => import("../views/ui/Tables"));
-// const Forms = lazy(() => import("../views/ui/Forms"));
-// const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
-
-/*****Routes******/
 
 const ThemeRoutes = [
   {
@@ -63,18 +50,23 @@ const ThemeRoutes = [
       { path: "/finallist", exact: true, element: <FinalList /> },
       { path: "/noticeboard", exact: true, element: <NoticeBoards /> },
       // { path: "/notification", exact: true, element: <Notification /> },
-      { path: "uploadmarks", exact: true, element: <UploadMarks /> },
+
+
       { path: "/evaluator", exact: true, element: <AddEvaluator /> },
       { path: "/approved", exact: true, element: <ApprovedTable /> },
       { path: "/uploadmarks", exact: true, element: <UploadMarks /> },
       { path: "/applicationtable", exact: true, element: <ApplicationTable /> },
       {
-        path: "/circular", exact: true,
+        path: "/circular",
         element: <ViewCircular />
       },
       {
-        path: "/admitcard",
+         path: "/admitcard",
         element: <AdmitCard />,
+      },
+      {
+        path:"/test",
+        element:<Test/>
       },
 
       // { path: "/about", exact: true, element: <About /> },
@@ -125,8 +117,12 @@ const ThemeRoutes = [
     element: <Home/>
   },
   {
-    path: "/circulardetails",
+    path: "/circulardetails/:circularId",
     element: <CircularDetails />
+  },
+  {
+    path: "/viewevaluator",
+    element: <ViewEvaluator />
   }
 
 ];

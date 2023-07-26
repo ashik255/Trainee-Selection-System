@@ -26,6 +26,7 @@ public class CircularEntity {
     private java.lang.String about;
     @Size(max = 1000)
     private java.lang.String requirement;
+    @Size(max = 1000)
     private String imgLink;
     @Size(max = 1000)
     private java.lang.String description;

@@ -52,13 +52,13 @@ const LoginPage = () => {
       console.log("User:", user);
 
       // Redirect to different routes based on role (You can uncomment this after implementing the role-based redirection)
-      // if (user && user.role === 'Admin') {
-      //   navigate('/admin/dashboard');
-      // } else if (user && user.role === 'APPLICANT') {
-      //   navigate('/trainer/dashboard');
-      // } else if (user && user.role === 'EVALUATOR') {
-      //   navigate('/trainee/dashboard');
-      // }
+      if (user && user.role === 'Admin') {
+        navigate('/admin/dashboard');
+      } else if (user && user.role === 'APPLICANT') {
+        navigate('/trainer/dashboard');
+      } else if (user && user.role === 'EVALUATOR') {
+        navigate('/trainee/dashboard');
+      }
 
       console.log("Login successful!");
       console.log("Response:", response.data.data.token);

@@ -5,6 +5,7 @@ import com.bjit.traineeSelectionSystem.TSS.model.circular.CircularRequest;
 import com.bjit.traineeSelectionSystem.TSS.service.CircularService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class CircularController {
     private final CircularService circularService;
+
+
+//    @PreAuthorize("hasRole('ADMIN')")
 
     @PostMapping("/create")
     public ResponseEntity<ResponseModel<?>> createCircular(@RequestBody CircularRequest circularRequest){

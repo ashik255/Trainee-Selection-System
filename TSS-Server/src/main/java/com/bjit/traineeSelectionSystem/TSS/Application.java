@@ -9,10 +9,8 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class Application {
 
-	public static void main(String[] args) {
-
-		SpringApplication.run(Application.class, args);
-		System.out.println("---------------------------------------------");
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
 
 }

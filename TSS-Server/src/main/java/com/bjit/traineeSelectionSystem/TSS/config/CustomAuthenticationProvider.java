@@ -36,22 +36,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return authenticationType.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-//    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
-//        try {
-//            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
-//        } catch (Exception ex) {
-//            throw new InvalidAuthenticationCredentials("Invalid Email and Password");
-//        }
-//        String jwtToken = jwtService.generateToken(userDetailsService.loadUserByUsername(loginRequest.getEmail()));
-//        LoginResponse loginResponse = LoginResponse.builder().token(jwtToken).build();
-//        return new ResponseEntity<>(ResponseModel.builder().data(loginResponse).build(), HttpStatus.OK);
-//    }
-//    }
-
-//    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
-//
-//    }
-
-//    public ResponseEntity<ResponseModel> login(LoginRequest loginRequest) {
-//    }
 }

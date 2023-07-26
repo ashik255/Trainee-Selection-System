@@ -4,7 +4,7 @@
 .pdf-container {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #f0f0f0;
+    background-color: white;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -26,7 +26,7 @@
   .admit-card-footer {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid white;
   }
   
   .footer-heading {
@@ -47,7 +47,7 @@
   #pdf-image {
     margin-top: 20px;
     max-width: 150px;
-    border: 1px solid #ccc;
+    border: 1px solid white;
     border-radius: 4px;
   }
   

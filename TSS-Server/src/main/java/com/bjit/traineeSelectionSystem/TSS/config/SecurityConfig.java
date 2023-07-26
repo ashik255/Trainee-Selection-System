@@ -20,10 +20,11 @@ public class SecurityConfig {
             new AntPathRequestMatcher("/user/register"),
             new AntPathRequestMatcher("/user/login"),
     };
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                .cors()
+                .and()
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
@@ -40,3 +41,4 @@ public class SecurityConfig {
         return http.build();
     }
 }
+
