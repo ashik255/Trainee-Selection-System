@@ -21,7 +21,7 @@ import {
   Button,
 } from "reactstrap";
 import pic from "../assets/images/logos/bjit logo.png";
-import user1 from "../assets/images/users/user1.jpg";
+import user1 from "../assets/images/users/ashik.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -58,7 +58,7 @@ const Header = () => {
     <Navbar style={{ backgroundColor: "#5584AC" }} expand="md">
       <div className="d-flex align-items-center">
         <NavbarBrand href="/" className="d-lg-none">
-          <img style={{ width: '70px', height: '50px' }} className="rounded w-10" src={pic} alt="" />
+          {/* <img style={{ width: '70px', height: '50px' }} className="rounded w-10" src={pic} alt="" /> */}
         </NavbarBrand>
         <Button
           color="primary"
@@ -95,7 +95,7 @@ const Header = () => {
             </Link>
           </NavItem>
 
-          <Link to="/dashboard" className="nav-link">
+          <Link to="/silebar" className="nav-link">
             <h5>DashBoard</h5>
           </Link>
           <NavItem className="m">

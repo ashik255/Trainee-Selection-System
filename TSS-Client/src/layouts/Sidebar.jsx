@@ -9,11 +9,6 @@ const navigation = [
     icon: "bi bi-house-door",
   },
   {
-    title: "Admit Card",
-    href: "/admitcard",
-    icon: "bi bi-bell",
-  },
-  {
     title: "CreateCircular",
     href: "/createcircular",
     icon: "bi bi-patch-check",
@@ -24,10 +19,11 @@ const navigation = [
     icon: "bi bi-patch-check",
   },
   {
-    title: "UPLOAD MARKS",
-    href: "/uploadmarks",
-    icon: "bi bi-hdd-stack",
-  },
+    title: "Admit Card",
+    href: "/admitcard",
+    icon: "bi bi-bell",
+  }, 
+
   {
     title: "Add EVALUATOR",
     href: "/evaluator",
@@ -59,8 +55,13 @@ const navigation = [
     icon: "bi bi-link",
   },
   {
-    title: "NOTICE BOARD",
-    href: "/noticeboard",
+    title: "UPLOAD MARKS",
+    href: "/uploadmarks",
+    icon: "bi bi-hdd-stack",
+  },
+  {
+    title: "Sendmail",
+    href: "/sendemail",
     icon: "bi bi-bag-dash",
   },
 ];

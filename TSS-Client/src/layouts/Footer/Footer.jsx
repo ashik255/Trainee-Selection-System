@@ -5,8 +5,8 @@ import { Paper } from "@mui/material";
 const Footer = () => {
   return (
     <Paper>
-      <footer className="commercial-footer">
-      <div className="container">
+      <footer style={{ backgroundColor: "#788ea1" }} className="commercial-footer mt-2">
+      <div className="container mt-2">
         <div className="row">
           <div className="col-md-4">
             <h3>Contact Information</h3>

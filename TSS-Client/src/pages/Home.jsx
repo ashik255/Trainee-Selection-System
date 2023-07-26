@@ -9,7 +9,9 @@ const Home = () => {
     return (
         <div>
             <CarouselComponent></CarouselComponent>
+            <br />
             <ViewCircular></ViewCircular>
+            <br />
             <Blog></Blog>
         </div>
     );

@@ -1,50 +1,23 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Button, Table } from 'react-bootstrap';
-// import './FinalList.css';
+import React, { useState, useEffect } from 'react';
+import { Container, Row, Col, Table } from 'react-bootstrap';
 
 const FinalList = () => {
-  const [applicants, setApplicants] = useState([
-    {
-      id: 1,
-      name: 'John Doe',
-      writtenExamScore: 90,
-      aptitudeTestScore: 85,
-      technicalInterviewScore: 95,
-      hrInterviewScore: 88,
-      totalScore: 358,
-      status: 'Selected',
-    },
-    {
-      id: 2,
-      name: 'Jane Smith',
-      writtenExamScore: 88,
-      aptitudeTestScore: 80,
-      technicalInterviewScore: 92,
-      hrInterviewScore: 85,
-      totalScore: 345,
-      status: 'Selected',
-    },
-    {
-      id: 3,
-      name: 'Michael Johnson',
-      writtenExamScore: 82,
-      aptitudeTestScore: 78,
-      technicalInterviewScore: 88,
-      hrInterviewScore: 90,
-      totalScore: 338,
-      status: 'Selected',
-    },
-    {
-      id: 4,
-      name: 'Emily Williams',
-      writtenExamScore: 78,
-      aptitudeTestScore: 82,
-      technicalInterviewScore: 80,
-      hrInterviewScore: 75,
-      totalScore: 315,
-      status: 'Not Selected',
-    },
-  ]);
+  const [applicants, setApplicants] = useState([]);
+
+  useEffect(() => {
+    // Function to fetch data from the URL and update the state
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:8081/marks/upload/hr/passed');
+        const data = await response.json();
+        setApplicants(data.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // Call the function to fetch data when the component mounts
+  }, []); // Empty dependency array to ensure the effect runs only once
 
   return (
     <Container>
@@ -66,15 +39,15 @@ const FinalList = () => {
             </thead>
             <tbody>
               {applicants.map((applicant) => (
-                <tr key={applicant.id}>
-                  <td>{applicant.id}</td>
+                <tr key={applicant.applicantId}>
+                  <td>{applicant.applicantId}</td>
                   <td>{applicant.name}</td>
-                  <td>{applicant.writtenExamScore}</td>
-                  <td>{applicant.aptitudeTestScore}</td>
-                  <td>{applicant.technicalInterviewScore}</td>
-                  <td>{applicant.hrInterviewScore}</td>
-                  <td>{applicant.totalScore}</td>
-                  <td>{applicant.status}</td>
+                  <td>{applicant.written_exam}</td>
+                  <td>{applicant.aptitude_test}</td>
+                  <td>{applicant.technical_interview}</td>
+                  <td>{applicant.hr_interview}</td>
+                  <td>{applicant.total_marks}</td>
+                  <td>{applicant.hrPassed ? 'Selected' : 'Not Selected'}</td>
                 </tr>
               ))}
             </tbody>
@@ -86,3 +59,4 @@ const FinalList = () => {
 };
 
 export default FinalList;
+
