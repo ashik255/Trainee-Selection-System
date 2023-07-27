@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import QRCode from "qrcode.react";
-import {QrReader} from "react-qr-reader";
+// import {QrReader} from "react-qr-reader";
 
 const QRCodeGeneratorAndScanner = () => {
   const [qrCodeData, setQrCodeData] = useState("");
@@ -31,7 +31,7 @@ const QRCodeGeneratorAndScanner = () => {
           </div>
         </div>
         <div className="col-md-6">
-          <div className="text-center">
+          {/* <div className="text-center">
             {scanSuccess ? (
               <h4>Scan Success! Data: {qrCodeData}</h4>
             ) : (
@@ -42,7 +42,7 @@ const QRCodeGeneratorAndScanner = () => {
                 style={{ width: "100%" }}
               />
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
