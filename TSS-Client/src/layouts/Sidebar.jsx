@@ -30,8 +30,8 @@ const navigation = [
     icon: "bi bi-card-text",
   },
   {
-    title: "Login",
-    href: "/login",
+    title: "QRCode",
+    href: "/qrcode",
     icon: "bi bi-box-arrow-in-right",
   },
   {
