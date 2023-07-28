@@ -62,10 +62,6 @@ Please follow the steps below to run the project:
 
 ServerSide:
 
-## Introduction
-
-Provide a brief introduction to your project. Explain what it does and its main features.
-
 ## Technologies Used
 
 - Java
