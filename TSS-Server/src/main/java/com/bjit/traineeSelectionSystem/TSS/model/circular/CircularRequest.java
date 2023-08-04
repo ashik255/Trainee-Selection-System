@@ -22,7 +22,6 @@ public class CircularRequest {
     @NotBlank
     @Size(max = 1000)
     private String imgLink;
-
     @NotBlank
     @Size(max = 1000)
     private java.lang.String description;
