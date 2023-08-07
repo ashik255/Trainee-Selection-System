@@ -1,4 +1,3 @@
-# YSD_B02_J2EE_FinalProject_Ariful-
 
 # Project Name: Trainee Selection System
 Feature List:
