@@ -57,8 +57,6 @@ Please follow the steps below to run the project:
 1. Install the required dependencies using `npm install`.
 2. Use the scripts provided to start, build, test, or eject the application.
 
-
-
 ServerSide:
 
 ## Technologies Used
@@ -85,7 +83,7 @@ Explain how to use the application once it's set up. Include any relevant endpoi
 
 ## API Documentation
 
-If you have an API documentation, provide a link or explain how developers can access it.
+If you have API documentation, provide a link or explain how developers can access it.
 
 ## Contributing
 
