@@ -1,4 +1,3 @@
-
 # Project Name: Trainee Selection System
 Feature List:
 1. Applicants Registration:
